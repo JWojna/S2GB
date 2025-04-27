@@ -22,25 +22,25 @@ router.post(
             }
         });
 
-         if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
+        if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
             const err = new Error('Login failed');
             err.status = 401;
             err.title = 'Loging failed';
-            err.errors = { credential: 'The provided credentials were invalid'};
+            err.errors = { credential: 'The provided credentials were invalid' };
             return next(err);
-         }
+        }
 
-         const safeUser = {
+        const safeUser = {
             id: user.id,
             email: user.email,
             username: user.username,
-         };
+        };
 
-         setTokenCookie(restoreUser, safeUser);
+        setTokenCookie(restoreUser, safeUser);
 
-         return restoreUser.json({
+        return restoreUser.json({
             user: safeUser
-         });
+        });
     }
 );
 
@@ -48,9 +48,27 @@ router.post(
 router.delete(
     '/',
     (_req, res) => {
-      res.clearCookie('token');
-      return res.json({ message: 'success' });
+        res.clearCookie('token');
+        return res.json({ message: 'success' });
     }
-  );
+);
+
+//! Restore session user
+router.get(
+    '/',
+    (req, res) => {
+        const { user } = req;
+        if (user) {
+            const safeUser = {
+                id: user.id,
+                email: user.email,
+                username: user.username,
+            };
+            return res.json({
+                user: safeUser
+            });
+        } else return res.json({ user: null });
+    }
+);
 
 module.exports = router;
