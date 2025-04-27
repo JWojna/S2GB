@@ -8,7 +8,6 @@ const seedUsers = [
         smite2IGN: 'Wrecktify',
         profilePic: null,
         bio: null,
-        lastLogin: new Date()
     },
     {
         username: 'Manny',
@@ -17,7 +16,6 @@ const seedUsers = [
         smite2IGN: '700C001',
         profilePic: null,
         bio: null,
-        lastLogin: new Date()
     },
     {
         username: 'DietyDestoyer',
@@ -27,7 +25,6 @@ const seedUsers = [
         profilePic: null,
         bio: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Sed tortor eros, convallis vitae quam eu, maximus facilisis ex.`,
-        lastLogin: new Date()
     },
     {
         username: 'MinionMaster',
@@ -37,7 +34,6 @@ const seedUsers = [
         profilePic: null,
         bio: `ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor eros,
         convallis vitae quam eu, risus.`,
-        lastLogin: new Date()
     },
 ]
 
