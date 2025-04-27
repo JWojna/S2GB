@@ -17,37 +17,79 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       godID: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(6),
+        allowNull: false,
+        unique: true
       },
       godName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       pantheon: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      role: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      specialization: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       damageType: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM('Physical', 'Magical', 'Hybrid'),
+        allowNull: false
+      },
+      scaleType: {
+        type: Sequelize.ENUM('Strength', 'Intelligence', 'Hybrid'),
+        allowNull: false
+      },
+      health: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      mana: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      speed: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      attkSec: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      physDef: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      magDef: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      hpReg: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      mpReg: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       lore: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT('long'),
+        allowNull: false
       },
       releaseDate: {
-        type: Sequelize.DATE
-      },
-      pros: {
-        type: Sequelize.STRING
-      },
-      cons: {
-        type: Sequelize.STRING
-      },
-      iconURL: {
-        type: Sequelize.STRING
-      },
-      cardArtURL: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: true,
+        defaultValue: 'unavailable'
       },
       createdAt: {
         allowNull: false,
