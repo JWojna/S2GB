@@ -9,14 +9,44 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Roles', {
+    await queryInterface.createTable('Gods', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      roleName: {
+      godID: {
+        type: Sequelize.STRING
+      },
+      godName: {
+        type: Sequelize.STRING
+      },
+      title: {
+        type: Sequelize.STRING
+      },
+      pantheon: {
+        type: Sequelize.STRING
+      },
+      damageType: {
+        type: Sequelize.STRING
+      },
+      lore: {
+        type: Sequelize.STRING
+      },
+      releaseDate: {
+        type: Sequelize.DATE
+      },
+      pros: {
+        type: Sequelize.STRING
+      },
+      cons: {
+        type: Sequelize.STRING
+      },
+      iconURL: {
+        type: Sequelize.STRING
+      },
+      cardArtURL: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -32,7 +62,7 @@ module.exports = {
     }, options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'Roles'
+    options.tableName = 'Gods'
     await queryInterface.dropTable(options);
   }
 };
