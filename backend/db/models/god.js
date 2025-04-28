@@ -24,30 +24,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     pantheon: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    role: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    specialization: {
-      type: DataTypes.STRING,
-      allowNull: true
     },
     damageType: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isType(val) {
-          const types = ['Physical', 'Magical', 'Hybrid'];
+          const types = ['Physical', 'Magical', 'Hybrid', 'Melee', 'Ranged'];
           if (!types.includes(val)) {
-            throw new Error('Invalid damage type, check spelling, **Physical | Magical | Hybrid**');
+            throw new Error('Invalid damage type, check spelling, **Physical | Magical | Hybrid | Melee | Ranged**');
           };
         },
       },
@@ -95,15 +83,6 @@ module.exports = (sequelize, DataTypes) => {
     mpReg: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    lore: {
-      type: DataTypes.TEXT('long'),
-      allowNull: false
-    },
-    releaseDate: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: 'unavailable'
     },
   }, {
     sequelize,

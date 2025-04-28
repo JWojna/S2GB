@@ -26,21 +26,9 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       pantheon: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      role: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      specialization: {
-        type: Sequelize.STRING,
-        allowNull: true
       },
       damageType: {
         type: Sequelize.ENUM('Physical', 'Magical', 'Hybrid'),
@@ -81,15 +69,6 @@ module.exports = {
       mpReg: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      lore: {
-        type: Sequelize.TEXT('long'),
-        allowNull: false
-      },
-      releaseDate: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: 'unavailable'
       },
       createdAt: {
         allowNull: false,
