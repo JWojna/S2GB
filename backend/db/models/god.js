@@ -1,7 +1,12 @@
 'use strict';
+
 const {
   Model
 } = require('sequelize');
+
+const damageTypes = ['Physical', 'Magical', 'Hybrid', 'Melee', 'Ranged'];
+const scaleTypes = ['Strength', 'Intelligence', 'Hybrid'];
+
 module.exports = (sequelize, DataTypes) => {
   class God extends Model {
     /**
@@ -33,8 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isType(val) {
-          const types = ['Physical', 'Magical', 'Hybrid', 'Melee', 'Ranged'];
-          if (!types.includes(val)) {
+          if (!damageTypes.includes(val)) {
             throw new Error('Invalid damage type, check spelling, **Physical | Magical | Hybrid | Melee | Ranged**');
           };
         },
@@ -45,9 +49,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isType(val) {
-          const types = ['Strength', 'Intelligence', 'Hybrid'];
-          if (!types.includes(val)) {
-            throw new Error('Invalid damage type, check spelling, **Strength | Intelligence | Hybrid**');
+          if (!scaleTypes.includes(val)) {
+            throw new Error('Invalid scaleing type, check spelling, **Strength | Intelligence | Hybrid**');
           };
         },
       },
