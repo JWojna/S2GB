@@ -6,28 +6,35 @@ const {
 
 
 const tags = [
-  'Physical',
-  'Magical',
-  'Melee',
-  'Ranged',
-  'Hybrid',
-  'STR',
-  'INT',
-  'Sharpshooter',
-  'Nuker',
-  'Slayer',
-  'Lockdown',
-  'Shielding',
-  'Stealth',
-  'Buffs',
+  '|', //! pipe just in case
+  'Area Control',
   'Brawler',
-  'Tank',
-  'Mobile',
+  'Buffs',
+  'Burst Damage',
+  'Coming Soon',
+  'Constant Damage',
+  'Execute',
   'Global',
   'Healing',
-  'Execute',
+  'Hybrid',
+  'INT',
+  'Lockdown',
+  'Magical',
+  'Melee',
+  'Mobile',
+  'Nuker',
+  'Physical',
+  'Pressure',
+  'Ranged',
+  'Sharpshooter',
+  'Shielding',
+  'Slayer',
   'Sniper',
-]
+  'Stealth',
+  'STR',
+  'Sustain',
+  'Tank',
+];
 
 module.exports = (sequelize, DataTypes) => {
   class God extends Model {
