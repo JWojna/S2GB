@@ -67,7 +67,7 @@ const egyptianGods = [
     },
     {
         godId: 'egNIET',
-        godName: 'Nieth',
+        godName: 'Neith',
         title: 'Weaver Of Fate',
         pantheon: 'Egyptian',
         tags: 'Ranged | Physical | Hybrid | Sharpshooter | Nuker | Global',
