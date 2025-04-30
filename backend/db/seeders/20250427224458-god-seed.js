@@ -2,7 +2,7 @@
 
 const { God } = require('../models');
 
-const seedGods = require('../data/godsData/gods/index')
+const gods = require('../data/godsData/gods/index')
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await God.bulkCreate(seedGods)
+    await God.bulkCreate(gods)
   },
 
   async down (queryInterface, Sequelize) {

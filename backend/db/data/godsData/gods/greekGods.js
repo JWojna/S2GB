@@ -4,6 +4,7 @@ const greekGods = [
     {
         godID: 'grACHI',
         godName: 'Achilles',
+        title: 'Hero Of The Trojan War',
         pantheon: 'Greek',
         tags: 'Melee | Physical | STR | Brawler | Execute | Lockdown',
         health: '622.5 | 97.5',
@@ -19,6 +20,7 @@ const greekGods = [
     {
         godID: 'grAPHR',
         godName: 'Aphrodite',
+        title: 'Goddess Of Beauty',
         pantheon: 'Greek',
         tags: 'Ranged | Magical | INT | Healing | Buffs | Sustain',
         health: '591.375 | 92.625',
@@ -34,6 +36,7 @@ const greekGods = [
     {
         godID: 'grARES',
         godName: 'Ares',
+        title: 'God Of War',
         pantheon: 'Greek',
         tags: 'Melee | Magical | Hybrid | Tank | Lockdown | Buffs',
         health: '672.3 | 105.3',
@@ -49,6 +52,7 @@ const greekGods = [
     {
         godID: 'grARTE',
         godName: 'Artemis',
+        title: 'Goddess Of The Hunt',
         pantheon: 'Greek',
         tags: 'Ranged | Physical | STR | Sharpshooter | Lockdown',
         health: '591.375 | 92.625',
@@ -64,6 +68,7 @@ const greekGods = [
     {
         godID: 'grATHE',
         godName: 'Athena',
+        title: 'Goddess Of Wisdom',
         pantheon: 'Greek',
         tags: 'Melee | Magical | Hybrid | Tank | Lockdown | Global',
         health: '672.3 | 105.3',
@@ -79,6 +84,7 @@ const greekGods = [
     {
         godID: 'grCERB',
         godName: 'Cerberus',
+        title: 'Warden Of The Underworld',
         pantheon: 'Greek',
         tags: 'Melee | Magical | INT | Tank | Area Control | Pressure',
         health: '647.4 | 101.39999999999999',
@@ -94,6 +100,7 @@ const greekGods = [
     {
         godID: 'grHADE',
         godName: 'Hades',
+        title: 'King Of The Underworld',
         pantheon: 'Greek',
         tags: 'Ranged | Magical | INT | Nuker | Mobile | Lockdown',
         health: '617.625 | 92.625',
@@ -109,6 +116,7 @@ const greekGods = [
     {
         godID: 'grHECA',
         godName: 'Hecate',
+        title: 'Goddess Of Sorcery',
         pantheon: 'Greek',
         tags: 'Ranged | Magical | INT | Nuker | Lockdown | Buffs',
         health: '572.7 | 89.7',
@@ -124,6 +132,7 @@ const greekGods = [
     {
         godID: 'grMEDU',
         godName: 'Medusa',
+        title: 'The Gorgon',
         pantheon: 'Greek',
         tags: 'Ranged | Physical | Hybrid | Burst Damage | Lockdown | Pressure',
         health: '591.375 | 92.625',
@@ -139,6 +148,7 @@ const greekGods = [
     {
         godID: 'grNEME',
         godName: 'Nemesis',
+        title: 'Goddess Of Vengeance',
         pantheon: 'Greek',
         tags: 'Melee | Physical | Hybrid | Mobile | Shielding | Constant Damage',
         health: '622.5 | 97.5',
@@ -154,6 +164,7 @@ const greekGods = [
     {
         godID: 'grPOSE',
         godName: 'Poseidon',
+        title: 'God Of The Oceans',
         pantheon: 'Greek',
         tags: 'Ranged | Magical | INT | Nuker | Area Control',
         health: '591.375 | 92.625',
@@ -169,6 +180,7 @@ const greekGods = [
     {
         godID: 'grTHAN',
         godName: 'Thanatos',
+        title: 'Hand Of Death',
         pantheon: 'Greek',
         tags: 'Melee | Physical | STR | Slayer | Execute | Global',
         health: '622.5 | 97.5',
@@ -184,6 +196,7 @@ const greekGods = [
     {
         godID: 'grZEUS',
         godName: 'Zeus',
+        title: 'God Of The Sky',
         pantheon: 'Greek',
         tags: 'Ranged | Magical | Hybrid | Sharpshooter | Nuker',
         health: '591.375 | 92.625',

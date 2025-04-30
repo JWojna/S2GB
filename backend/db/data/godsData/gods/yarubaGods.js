@@ -4,6 +4,7 @@ const yarubaGods = [
     {
         godID: 'ybYEMO',
         godName: 'Yemoja',
+        title: 'Goddess Of Rivers',
         pantheon: 'Yoruba',
         tags: 'Ranged | Magical | Tank | Healing | Shielding',
         health: '672.3 | 105.3',
@@ -13,8 +14,8 @@ const yarubaGods = [
         attackSpeedPrecent: '1.4 | 1.4',
         physProt: '20.1 | 3.184210526315789',
         magProt: '29.2 | 1.5894736842105264',
-        hpReg: '1.77 | ?',
-        mpReg: '2.25 | ?',
+        hp5: '1.77 | ?',
+        mp5: '2.25 | ?',
     },
 ]
 

@@ -5,6 +5,7 @@ const polynesianGods = [
         godID: 'pnPELE',
         godName: 'Pele',
         pantheon: 'Polynesian',
+        title: 'Goddess Of Volcanoes',
         tags: 'Melee | Physical | STR | Slayer | Mobile | Burst Damage',
         health: '622.5 | 97.5',
         mana: '296 | 42',
@@ -13,8 +14,8 @@ const polynesianGods = [
         attackSpeedPrecent: '1.456 | 1.46',
         physProt: '19 | 3',
         magProt: '27.5 | 1.5',
-        hpReg: '1.7 | ?',
-        mpReg: '2.25 | ?',
+        hp5: '1.7 | ?',
+        mp5: '2.25 | ?',
     },
 ]
 

@@ -4,6 +4,7 @@ const arthurianGods = [
     {
         godID: 'arMORD',
         godName: 'Mordred',
+        title: 'Breaker Of The Round Table',
         pantheon: 'Arthurian',
         tags: 'Melee | Physical | Hybrid | Slayer | Tank | Global',
         health: '591.375 | 92.625',
@@ -19,6 +20,7 @@ const arthurianGods = [
     {
         godID: 'arMERL',
         godName: 'Merlin',
+        title: 'The Master Wizard',
         pantheon: 'Arthurian',
         tags: 'Ranged | Magical | INT | Nuker | Burst Damage',
         health: '575.625 | 92.625',

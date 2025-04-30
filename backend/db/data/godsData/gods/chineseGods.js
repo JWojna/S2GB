@@ -4,6 +4,7 @@ const chineseGods = [
     {
         godID: 'chGUYU',
         godName: 'Guan Yu',
+        title: 'Coming Soon',
         pantheon: 'Chinese',
         tags: 'Coming Soon',
         health: 'Coming Soon',
@@ -19,6 +20,7 @@ const chineseGods = [
     {
         godID: 'chHUMU',
         godName: 'Hua Mulan',
+        title: 'The Ascendant Warrior',
         pantheon: 'Chinese',
         tags: 'Melee | Physical | STR | Brawler | Tank | Pressure',
         health: '647.4 | 101.39999999999999',
@@ -34,6 +36,7 @@ const chineseGods = [
     {
         godID: 'chJIWE',
         godName: 'Jing Wei',
+        title: 'The Oathkeeper',
         pantheon: 'Chinese',
         tags: 'Ranged | Physical | STR | Sharpshooter | Mobile',
         health: '591.375 | 92.625',
@@ -49,6 +52,7 @@ const chineseGods = [
     {
         godID: 'chNUWA',
         godName: 'Nu Wa',
+        title: 'Guardian Of Heaven',
         pantheon: 'Chinese',
         tags: 'Ranged | Magical | INT | Nuker | Global | Stealth',
         health: '591.375 | 92.625',

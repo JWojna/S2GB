@@ -4,6 +4,7 @@ const celticGods = [
     {
         godID: 'ceCERN',
         godName: 'Cernunnos',
+        title : 'The Horned God',
         pantheon: 'Celtic',
         tags: 'Ranged | Physical | Hybrid | Nuker | Sharpshooter | Lockdown',
         health: '591.375 | 92.625',
@@ -19,6 +20,7 @@ const celticGods = [
     {
         godID: 'ceTHMO',
         godName: 'The Morrigan',
+        title : 'Phantom Queen',
         pantheon: 'Celtic',
         tags: 'Ranged | Magical | INT | Slayer | Nuker | Stealth',
         scaleType: 'Intelligence',

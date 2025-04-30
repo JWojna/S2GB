@@ -4,6 +4,7 @@ const egyptianGods = [
     {
         godID: 'egANHU',
         godName: 'Anhur',
+        title: 'Slayer Of Enemies',
         pantheon: 'Egyptian',
         tags: 'Ranged | Physical | STR | Sharpshooter | Lockdown | Mobility',
         health: '591.375 | 92.625',
@@ -19,6 +20,7 @@ const egyptianGods = [
     {
         godID: 'egANUB',
         godName: 'Anubis',
+        title: 'God Of The Dead',
         pantheon: 'Egyptian',
         tags: 'Ranged | Magic | INT | Nuker | Lockdown',
         health: '591.375 | 92.625',
@@ -34,6 +36,7 @@ const egyptianGods = [
     {
         godID: 'egGEB',
         godName: 'Geb',
+        title: 'God Of Earth',
         pantheon: 'Egyptian',
         tags: 'Melee | Magical | INT | Tank | Area Control | Shielding',
         health: '672.3 | 105.3',
@@ -49,6 +52,7 @@ const egyptianGods = [
     {
         godID: 'egKEPH',
         godName: 'Kephri',
+        title: 'The Dawn Bringer',
         pantheon: 'Egyptian',
         tags: 'Melee | Magical | INT | Tank | Lockdown | Buffs',
         health: '672.3 | 105.3',
@@ -64,6 +68,7 @@ const egyptianGods = [
     {
         godID: 'egNIET',
         godName: 'Nieth',
+        title: 'Weaver Of Fate',
         pantheon: 'Egyptian',
         tags: 'Ranged | Physical | Hybrid | Sharpshooter | Nuker | Global',
         scaleType: 'Hybrid',
@@ -80,6 +85,7 @@ const egyptianGods = [
     {
         godID: 'egRA',
         godName: 'Ra',
+        title: 'Sun God',
         pantheon: 'Egyptian',
         tags: 'Ranged | Magical | INT | Sniper | Healing | Buffs',
         health: '591.375 | 92.625',
@@ -95,6 +101,7 @@ const egyptianGods = [
     {
         godID: 'egSOBE',
         godName: 'Sobek',
+        title: 'God Of The Nile',
         pantheon: 'Egyptian',
         tags: 'Melee | Magical | INT | Tank | Lockdown | Execute',
         health: '626.4 | 101.39999999999999',

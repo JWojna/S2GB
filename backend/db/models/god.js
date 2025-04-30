@@ -58,6 +58,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     pantheon: {
       type: DataTypes.STRING,
       allowNull: false
