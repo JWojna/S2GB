@@ -2,7 +2,7 @@
 
 const polynesianGods = [
     {
-        godID: 'pnPELE',
+        godId: 'pnPELE',
         godName: 'Pele',
         pantheon: 'Polynesian',
         title: 'Goddess Of Volcanoes',
@@ -11,7 +11,7 @@ const polynesianGods = [
         mana: '296 | 42',
         speed: '375',
         baseAttackSpeed: '1.0044',
-        attackSpeedPrecent: '1.456 | 1.46',
+        attackSpeedPercent: '1.456 | 1.46',
         physProt: '19 | 3',
         magProt: '27.5 | 1.5',
         hp5: '1.7 | ?',

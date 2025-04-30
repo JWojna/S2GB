@@ -44,11 +44,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      God.hasMany(models.Ability, { foreignKey: 'godId' });
     }
   }
   God.init({
-    godID: {
+    godId: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
@@ -93,7 +93,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    attackSpeedPrecent: {
+    attackSpeedPercent: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -120,7 +120,13 @@ module.exports = (sequelize, DataTypes) => {
       attributes: {
         exclude: ['createdAt', 'updatedAt']
       }
-    }
+    },
+    indexes: [
+      { unique: true, fields: ['godId'] },
+      { unique: true, fields: ['godName'] },
+      { fields: ['pantheon'] },
+      { fields: ['tags'] },
+    ]
   });
   return God;
 };

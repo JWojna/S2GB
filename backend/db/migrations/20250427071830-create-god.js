@@ -16,7 +16,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      godID: {
+      godId: {
         type: Sequelize.STRING(6),
         allowNull: false,
         unique: true
@@ -81,7 +81,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      attackSpeedPrecent: {
+      attackSpeedPercent: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -104,14 +104,19 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        default: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        default: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     }, options);
+    //! ensure indexes are added
+    await queryInterface.addIndex('Gods', ['godId'], { unique: true, ...options });
+    await queryInterface.addIndex('Gods', ['godName'], { unique: true, ...options });
+    await queryInterface.addIndex('Gods', ['pantheon'], options);
+    await queryInterface.addIndex('Gods', ['tags'], options);
   },
   async down(queryInterface, Sequelize) {
     options.tableName = 'Gods'

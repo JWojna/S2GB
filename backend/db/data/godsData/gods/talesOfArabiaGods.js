@@ -3,7 +3,7 @@
 
 const arabiaGods = [
     {
-        godID: 'taALAD',
+        godId: 'taALAD',
         godName: 'Aladdin',
         title: 'The Sultan',
         pantheon: 'Tales of Arabia',
@@ -12,7 +12,7 @@ const arabiaGods = [
         mana: '296 | 42',
         speed: '365',
         baseAttackSpeed: '1',
-        attackSpeedPrecent: '1.442 | 1.44',
+        attackSpeedPercent: '1.442 | 1.44',
         physProt: '19.6 | 3.089473684210526',
         magProt: '28.3 | 1.5473684210526317',
         hp5: '1.7 | ?',

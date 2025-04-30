@@ -2,7 +2,7 @@
 
 const celticGods = [
     {
-        godID: 'ceCERN',
+        godId: 'ceCERN',
         godName: 'Cernunnos',
         title : 'The Horned God',
         pantheon: 'Celtic',
@@ -11,14 +11,14 @@ const celticGods = [
         mana: '296 | 42',
         speed: '365',
         baseAttackSpeed: '0.99',
-        attackSpeedPrecent: '1.484 | 1.48',
+        attackSpeedPercent: '1.484 | 1.48',
         physProt: '18.4 | 2.910526315789474',
         magProt: '26.7 | 1.4526315789473683',
         hp5: '1.7 | 0.2',
         mp5: '2.25 | 0.25',
     },
     {
-        godID: 'ceTHMO',
+        godId: 'ceTHMO',
         godName: 'The Morrigan',
         title : 'Phantom Queen',
         pantheon: 'Celtic',
@@ -28,7 +28,7 @@ const celticGods = [
         mana: '296 | 42',
         speed: '365',
         baseAttackSpeed: '0.99',
-        attackSpeedPrecent: '1.484 | 1.48',
+        attackSpeedPercent: '1.484 | 1.48',
         physProt: '18.4 | 2.910526315789474',
         magProt: '26.7 | 1.4526315789473683',
         hp5: '1.7 | 0.2',

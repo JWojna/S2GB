@@ -2,7 +2,7 @@
 
 const yarubaGods = [
     {
-        godID: 'ybYEMO',
+        godId: 'ybYEMO',
         godName: 'Yemoja',
         title: 'Goddess Of Rivers',
         pantheon: 'Yoruba',
@@ -11,7 +11,7 @@ const yarubaGods = [
         mana: '296 | 42',
         speed: '375',
         baseAttackSpeed: '0.93',
-        attackSpeedPrecent: '1.4 | 1.4',
+        attackSpeedPercent: '1.4 | 1.4',
         physProt: '20.1 | 3.184210526315789',
         magProt: '29.2 | 1.5894736842105264',
         hp5: '1.77 | ?',

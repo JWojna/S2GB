@@ -2,7 +2,7 @@
 
 const voodoGods = [
     {
-        godID: 'vdBASA',
+        godId: 'vdBASA',
         godName: 'Baron Samedi',
         title: 'God Of Life And Death',
         pantheon: 'Voodoo',
@@ -11,7 +11,7 @@ const voodoGods = [
         mana: '305 | 43',
         speed: '365',
         baseAttackSpeed: '0.93',
-        attackSpeedPrecent: '1.358 | 1.36',
+        attackSpeedPercent: '1.358 | 1.36',
         physProt: '19 | 3',
         magProt: '26.675 | 1.455',
         hp5: '1.7 | ?',

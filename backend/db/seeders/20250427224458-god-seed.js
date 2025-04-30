@@ -12,7 +12,11 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await God.bulkCreate(gods)
+    try {
+      await God.bulkCreate(gods)
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   async down (queryInterface, Sequelize) {
