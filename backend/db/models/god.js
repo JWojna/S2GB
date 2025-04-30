@@ -4,8 +4,30 @@ const {
   Model
 } = require('sequelize');
 
-const damageTypes = ['Physical', 'Magical', 'Hybrid', 'Melee', 'Ranged'];
-const scaleTypes = ['Strength', 'Intelligence', 'Hybrid'];
+
+const tags = [
+  'Physical',
+  'Magical',
+  'Melee',
+  'Ranged',
+  'Hybrid',
+  'STR',
+  'INT',
+  'Sharpshooter',
+  'Nuker',
+  'Slayer',
+  'Lockdown',
+  'Shielding',
+  'Stealth',
+  'Buffs',
+  'Brawler',
+  'Tank',
+  'Mobile',
+  'Global',
+  'Healing',
+  'Execute',
+  'Sniper',
+]
 
 module.exports = (sequelize, DataTypes) => {
   class God extends Model {
@@ -33,24 +55,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    damageType: {
+    tags: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isType(val) {
-          if (!damageTypes.includes(val)) {
-            throw new Error('Invalid damage type, check spelling, **Physical | Magical | Hybrid | Melee | Ranged**');
-          };
-        },
-      },
-    },
-    scaleType: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isType(val) {
-          if (!scaleTypes.includes(val)) {
-            throw new Error('Invalid scaleing type, check spelling, **Strength | Intelligence | Hybrid**');
+          if (!tags.includes(val)) {
+            throw new Error('Invalid tag');
           };
         },
       },
@@ -67,23 +78,27 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    attkSec: {
+    baseAttackSpeed: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    physDef: {
+    attackSpeedPrecent: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    magDef: {
+    physProt: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    hpReg: {
+    magProt: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    mpReg: {
+    hp5: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    mp5: {
       type: DataTypes.STRING,
       allowNull: false
     },

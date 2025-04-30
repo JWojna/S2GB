@@ -30,12 +30,28 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      damageType: {
-        type: Sequelize.ENUM('Physical', 'Magical', 'Hybrid'),
-        allowNull: false
-      },
-      scaleType: {
-        type: Sequelize.ENUM('Strength', 'Intelligence', 'Hybrid'),
+      tags: {
+        type: Sequelize.ENUM('Physical',
+          'Magical',
+          'Melee',
+          'Ranged',
+          'Hybrid',
+          'STR',
+          'INT',
+          'Sharpshooter',
+          'Nuker',
+          'Slayer',
+          'Lockdown',
+          'Shielding',
+          'Stealth',
+          'Buffs',
+          'Brawler',
+          'Tank',
+          'Mobile',
+          'Global',
+          'Healing',
+          'Execute',
+          'Sniper',),
         allowNull: false
       },
       health: {
@@ -50,23 +66,27 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      attkSec: {
+      baseAttackSpeed: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      physDef: {
+      attackSpeedPrecent: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      magDef: {
+      physProt: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      hpReg: {
+      magProt: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      mpReg: {
+      hp5: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      mp5: {
         type: Sequelize.STRING,
         allowNull: false
       },

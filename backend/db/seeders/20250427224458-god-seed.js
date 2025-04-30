@@ -2,7 +2,7 @@
 
 const { God } = require('../models');
 
-const seedGods = require('../data/godData')
+const seedGods = require('../data/godsData/gods/index')
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
