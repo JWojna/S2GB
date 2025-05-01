@@ -102,7 +102,6 @@ module.exports = (sequelize, DataTypes) => {
       //! BONUS ABILITY VALUES
       /*
       ^ BONUS (DAMAGE/HEAL/ATTKSPEED/ETC.)
-      ^ CONE / RADIUS
       ! SYNTAX FOR DELIM
       ^ '<NAME> - <VAL1 | VAL2...> --- <NAME> - <VAL1 | VAL2...>'
       ^  ' - ' FOR NAME  VAL SPLIT
