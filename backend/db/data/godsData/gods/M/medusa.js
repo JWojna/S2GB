@@ -1,0 +1,16 @@
+const Medusa = {
+    godId: 'grMEDU',
+    godName: 'Medusa',
+    title: 'The Gorgon',
+    pantheon: 'Greek',
+    tags: 'Ranged | Physical | Hybrid | Burst Damage | Lockdown | Pressure',
+    health: '591.375 | 92.625',
+    mana: '296 | 42',
+    speed: '375',
+    baseAttackSpeed: '1',
+    attackSpeedPercent: '1.456 | 1.456',
+    physProt: '18.05 | 2.85',
+    magProt: '26.125 | 1.425',
+    hp5: '1.7 | ?',
+    mp5: '2.14 | ?',
+}

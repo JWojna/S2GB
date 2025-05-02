@@ -5,8 +5,7 @@ const {
 } = require('sequelize');
 
 
-const tags = [
-  '|', //! pipe just in case
+const tags = [ '|', //! pipe just in case
   'Area Control',
   'Brawler',
   'Buffs',
@@ -44,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      God.hasMany(models.Ability, { foreignKey: 'godId' });
+
     }
   }
   God.init({
