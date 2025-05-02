@@ -65,41 +65,15 @@ module.exports = {
           'Tank',),
         allowNull: false
       },
-      health: {
-        type: Sequelize.STRING,
-        allowNull: false
+      stats: {
+        type: Sequelize.JSONB,
+        allowNull: false,
+        defaultValue: ['Coming Soon']
       },
-      mana: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      speed: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      baseAttackSpeed: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      attackSpeedPercent: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      physProt: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      magProt: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      hp5: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      mp5: {
-        type: Sequelize.STRING,
-        allowNull: false
+      abilities: {
+        type: Sequelize.JSONB,
+        allowNull: false,
+        defaultValue: ['Coming Soon']
       },
       createdAt: {
         allowNull: false,

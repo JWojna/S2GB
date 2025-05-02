@@ -5,7 +5,7 @@ const {
 } = require('sequelize');
 
 
-const tags = [ '|', //! pipe just in case
+const tags = ['|', //! pipe just in case
   'Area Control',
   'Brawler',
   'Buffs',
@@ -76,41 +76,15 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    health: {
-      type: DataTypes.STRING,
-      allowNull: false
+    stats: {
+      type: DataTypes.JSONB,
+      allowNull: false,
+      defaultValue: ['Coming Soon']
     },
-    mana: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    speed: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    baseAttackSpeed: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    attackSpeedPercent: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    physProt: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    magProt: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    hp5: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    mp5: {
-      type: DataTypes.STRING,
-      allowNull: false
+    abilities: {
+      type: DataTypes.JSONB,
+      allowNull: false,
+      defaultValue: ['Coming Soon']
     },
   }, {
     sequelize,
