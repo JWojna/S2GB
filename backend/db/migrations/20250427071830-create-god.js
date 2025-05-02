@@ -68,12 +68,12 @@ module.exports = {
       stats: {
         type: Sequelize.JSONB,
         allowNull: false,
-        defaultValue: ['Coming Soon']
+        defaultValue: {}
       },
       abilities: {
         type: Sequelize.JSONB,
         allowNull: false,
-        defaultValue: ['Coming Soon']
+        defaultValue: {}
       },
       createdAt: {
         allowNull: false,
