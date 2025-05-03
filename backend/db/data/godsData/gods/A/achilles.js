@@ -22,17 +22,15 @@ const Achilles = {
         "aspect": {
             "description": `Combat Dodge can now be recast after striking a Jungle Monster or Boss, with Spear Strike gaining increased Scaling when forgoing your Armor.
                 Radiant Glory no longer grants increased Protections or Crowd Control Reduction.`,
-            "icon": "/icons/achillesAspect.webp",
             "name": "Aspect of Prowess",
-            "spearStrikeBonusPercent": { "noArmor": 15 }
+            "spearStrikeBonusPercent": 15,
         },
-        "basicAttack": {
+        "basic": {
             "name": "Achilles Basic Attack",
             "shortDesc": "Deal Physical Damage to an enemy in front of you.",
             "valueKeys": {
-                "basicAttackDamage": { "baseDamage": 44.4, "perLevel": 2.4 },
                 "scalePercent": { "inhandPower": 100, "strength": 100, "intelligence": 20 },
-                "rangeData": { "ConeAngle": 120, "cheatRange": 2.56 },
+                "rangeData": { "ConeAngle": 120, "range": 2.56 },
             },
         },
         "passive": {
@@ -55,10 +53,10 @@ const Achilles = {
             "valueKeys": {
                 "damage": [100, 155, 210, 265, 320],
                 "scalePercent": { "strength": 80 },
+                "stunDuration": 0.8,
                 "rangeData": { "coneAngle": 80, "largeRadius": 8, "smallRadius": 3.2 },
                 "cooldown": 14,
                 "cost": [60, 65, 70, 75, 80],
-                "stunDuration": 0.8,
             }
         },
         "ab2": {
@@ -71,16 +69,16 @@ const Achilles = {
                 \r\n      • When Armored, the Gods' blessings also grant you a Physical Shield.
                 \r\n      • When forgoing your Armor, hitting an enemy god with your attacks from behind reduces their Protections.`,
             "valueKeys": {
-                "Strength": [6, 7, 8, 9, 10],
+                "strength": [6, 7, 8, 9, 10],
                 "protections": [10, 12.5, 15, 17.5, 20],
                 "crowdControlReductionPercent": 20,
-                "Heal": [18, 21, 24, 27, 30],
-                "BuffDuration": 6,
+                "heal": [18, 21, 24, 27, 30],
+                "buffDuration": 6,
                 "physicalShieldHealth": { "baseLevel": 50, "perLevel": 10 },
-                "ProtectionReductionPerLevel": 1,
-                "DebuffDuration": 3,
-                "Cost": [40, 45, 50, 55, 60],
-                "Cooldown": 9,
+                "protectionReductionPerLevel": 1,
+                "debuffDuration": 3,
+                "cost": [40, 45, 50, 55, 60],
+                "cooldown": 9,
             }
         },
         "ab3": {
@@ -97,7 +95,7 @@ const Achilles = {
                 "damage": [65, 100, 135, 170, 205],
                 "scalePercent": { "strength": 45 },
                 "slowPercentPerStack": 7.5,
-                "slowDuration": [3, 3, 3, 3, 3],
+                "slowDuration": 3,
                 "rangeData": {
                     "dodgeRange": 3.2,
                     "spearStrikeRadius": 0.96,
@@ -121,7 +119,7 @@ const Achilles = {
                 },
                 "cooldown": 90,
                 "cost": [60, 65, 70, 75, 80],
-                "debuffDuration": [10, 10, 10, 10, 10]
+                "debuffDuration": 10,
             }
         }
     }
