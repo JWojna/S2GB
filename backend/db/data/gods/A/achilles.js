@@ -1,4 +1,5 @@
-const achilles = {
+const achilles =
+{
     godId: 'grACHI',
     godName: 'Achilles',
     title: 'Hero Of The Trojan War',

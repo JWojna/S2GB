@@ -1,18 +1,11 @@
- const ymoja = {
+const ymoja = {
     godId: 'ybYEMO',
     godName: 'Yemoja',
     title: 'Goddess Of Rivers',
     pantheon: 'Yoruba',
-    tags: 'Ranged | Magical | Tank | Healing | Shielding',
-    health: '672.3 | 105.3',
-    mana: '296 | 42',
-    speed: '375',
-    baseAttackSpeed: '0.93',
-    attackSpeedPercent: '1.4 | 1.4',
-    physProt: '20.1 | 3.184210526315789',
-    magProt: '29.2 | 1.5894736842105264',
-    hp5: '1.77 | ?',
-    mp5: '2.25 | ?',
+    tags: ["Ranged", "Magical", "Tank", "Healing", "Shielding"],
+    stats: {},
+    abilities: {}
 }
 
 
