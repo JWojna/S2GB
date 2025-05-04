@@ -2,7 +2,8 @@
 
 const { God } = require('../models');
 
-const gods = require('../data/godsData/gods/index')
+const godFiles = require('../data/gods/index')
+const gods = Object.values(godFiles)
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -14,6 +15,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     try {
       await God.bulkCreate(gods)
+
     } catch (error) {
       console.log(error);
     }

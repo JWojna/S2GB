@@ -19,9 +19,9 @@ const ares =
     },
     abilities: {
         "aspect": {
-            "description": `Call to Arms no longer grants Protections or affects allies.
-                 Instead, Ares empowers his Shield for his next Basic Attack, stunning the target and spreading damage to nearby enemies.`,
             "name": "Aspect of Reverberation",
+            "shortDesc": `Call to Arms no longer grants Protections or affects allies.
+                 Instead, Ares empowers his Shield for his next Basic Attack, stunning the target and spreading damage to nearby enemies.`,
             "valueKeys": {
                 "bonusBasicAttackDamage": [8, 16, 24, 30, 36],
                 "stunDuration": 0.75,

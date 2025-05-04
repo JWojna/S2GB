@@ -4,7 +4,7 @@ const anhur =
     godName: 'Anhur',
     title: 'Slayer Of Enemies',
     pantheon: 'Egyptian',
-    tags: ["Ranged" | "Physical" | "STR" | "Sharpshooter" | "Lockdown" | "Mobility"],
+    tags: ["Ranged", "Physical", "STR", "Sharpshooter", "Lockdown", "Mobility"],
     stats: {
         "maxHealth": { "baseLevel": 591.375, "perLevel": 92.625 },
         "hp5": { "baseLevel": 2, "perLevel": 0.2105263157894737 },
@@ -19,9 +19,9 @@ const anhur =
     },
     abilities: {
         "aspect": {
-            "description": `Enfeeble no longer Debuffs enemies but dealing damage to the same enemy god with Basic Attacks provides you up to 100% bonus Attack Speed.
-                Dealing damage to another enemy god immediately resets all stacks.`,
             "name": "Aspect of Pride",
+            "shortDesc": `Enfeeble no longer Debuffs enemies but dealing damage to the same enemy god with Basic Attacks provides you up to 100% bonus Attack Speed.
+                Dealing damage to another enemy god immediately resets all stacks.`,
             "valueKeys": {
                 "buffDuration": 3,
                 "maxBuffStacks": 4,

@@ -5,7 +5,7 @@ const {
 } = require('sequelize');
 
 
-const tags = ['|', //! pipe just in case
+const tags = [
   'Area Control',
   'Brawler',
   'Buffs',
@@ -66,15 +66,21 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     tags: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSONB,
       allowNull: false,
       validate: {
-        isType(val) {
-          if (!tags.includes(val)) {
-            throw new Error('Invalid tag');
-          };
-        },
+        isValidTagArray(val) {
+          if (!Array.isArray(val)) {
+            throw new Error('Tags must be an array');
+          }
+          for (const tag of val) {
+            if (!tags.includes(tag)) {
+              throw new Error(`Invalid tag: ${tag}`);
+            }
+          }
+        }
       },
+      defaultValue: ['Coming Soon']
     },
     stats: {
       type: DataTypes.JSONB,

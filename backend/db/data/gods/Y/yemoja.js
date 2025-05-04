@@ -1,4 +1,4 @@
-const ymoja = {
+const yemoja = {
     godId: 'ybYEMO',
     godName: 'Yemoja',
     title: 'Goddess Of Rivers',

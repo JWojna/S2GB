@@ -20,7 +20,7 @@ const agni =
     abilities: {
         "aspect": {
             "name": "Aspect of Combustion",
-            "description": " Your Basic Attacks now ignite enemies dealing Magiacl Damage over time and stacking 5 times. Flame Wave and Rain of Fire consume ignites dealing a burst of damage. Rain of Fire has 45% reduced INT Scaling. Combustion gains 50 base damage per rank of the ability that consumes it. For every stack of Ignite, Combustion deals 30% more damage. ",
+            "shortdesc": " Your Basic Attacks now ignite enemies dealing Magiacl Damage over time and stacking 5 times. Flame Wave and Rain of Fire consume ignites dealing a burst of damage. Rain of Fire has 45% reduced INT Scaling. Combustion gains 50 base damage per rank of the ability that consumes it. For every stack of Ignite, Combustion deals 30% more damage. ",
             "valueKeys": {
                 "inginte": {
                     "baseDamage": 3,

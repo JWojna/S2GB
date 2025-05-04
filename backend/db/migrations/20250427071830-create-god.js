@@ -35,35 +35,9 @@ module.exports = {
         allowNull: false
       },
       tags: {
-        type: Sequelize.ENUM('|', //! pipe just in case
-          'Area Control',
-          'Brawler',
-          'Buffs',
-          'Burst Damage',
-          'Coming Soon',
-          'Constant Damage',
-          'Execute',
-          'Global',
-          'Healing',
-          'Hybrid',
-          'INT',
-          'Lockdown',
-          'Magical',
-          'Melee',
-          'Mobile',
-          'Nuker',
-          'Physical',
-          'Pressure',
-          'Ranged',
-          'Sharpshooter',
-          'Shielding',
-          'Slayer',
-          'Sniper',
-          'Stealth',
-          'STR',
-          'Sustain',
-          'Tank',),
-        allowNull: false
+        type: Sequelize.JSONB,
+        allowNull: false,
+        defaultValue: ['Coming Soon']
       },
       stats: {
         type: Sequelize.JSONB,

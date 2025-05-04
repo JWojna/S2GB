@@ -20,7 +20,7 @@ const amaterasu =
     abilities: {
         "aspect": {
             "name": "Aspect Of Valor",
-            "description": `Divine Presence now defaults to Red Buff, and when activated you gain Movement Speed, Haste, and Basic Attack Power in addition to the original effects.
+            "shortDesc": `Divine Presence now defaults to Red Buff, and when activated you gain Movement Speed, Haste, and Basic Attack Power in addition to the original effects.
                 It no longer alternates to Gold Buff, or Heals you when activated.`,
             "valueKeys": {
                 "basicDamage": [6, 12, 18, 24, 30],

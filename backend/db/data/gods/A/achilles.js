@@ -19,9 +19,9 @@ const achilles =
     },
     abilities: {
         "aspect": {
-            "description": `Combat Dodge can now be recast after striking a Jungle Monster or Boss, with Spear Strike gaining increased Scaling when forgoing your Armor.
-                Radiant Glory no longer grants increased Protections or Crowd Control Reduction.`,
             "name": "Aspect of Prowess",
+            "shortDesc": `Combat Dodge can now be recast after striking a Jungle Monster or Boss, with Spear Strike gaining increased Scaling when forgoing your Armor.
+                Radiant Glory no longer grants increased Protections or Crowd Control Reduction.`,
             "spearStrikeBonusPercent": 15,
         },
         "basic": {
