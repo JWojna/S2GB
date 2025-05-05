@@ -43,7 +43,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-
+      God.hasMany(models.Image, {
+        foreignKey: 'imageableId',
+        constraints: false,
+        scope: {
+          imageableType: 'god'
+        },
+        as: 'Images'
+      })
     }
   }
   God.init({
