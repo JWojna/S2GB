@@ -16,10 +16,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      imageType: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       imageableType: {
         type: Sequelize.STRING,
         allowNull: false
@@ -44,7 +40,6 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
-    await queryInterface.addIndex('Images', ['imageType'], options);
     await queryInterface.addIndex('Images', ['imageableType'], options);
   },
   async down(queryInterface, Sequelize) {
