@@ -40,6 +40,7 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
+
     await queryInterface.addIndex('Images', ['imageableType'], options);
   },
   async down(queryInterface, Sequelize) {
