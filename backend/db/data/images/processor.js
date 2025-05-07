@@ -15,7 +15,6 @@ function extractIdentifier(filePath) {
     return null;
 }
 
-
 function getImageableType(filePath) {
     if (filePath.startsWith('gods/')) return 'god';
     if (filePath.startsWith('items/')) return 'item';
@@ -29,7 +28,6 @@ function camelToTitle(str) {
         .replace(/^./, s => s.toUpperCase()); // capitalize first letter
 }
 
-
 async function processImages() {
     const results = [];
 
@@ -40,18 +38,12 @@ async function processImages() {
         let imageableId = null;
         const identifier = extractIdentifier(relativePath); // Get the initial identifier
 
-        // console.log(`Processing image path: ${relativePath}`);
-        // console.log(`  imageableType: ${imageableType}`);
-        // console.log(`  identifier: ${identifier}`);
-//
         if (imageableType === 'god') {
             const capitalizedIdentifier = identifier.charAt(0).toUpperCase() + identifier.slice(1);
             let god;
             if (relativePath.includes('/abilities/')) {
-                // console.log(`  Detected ability image.`);
                 god = await God.findOne({ where: { godName: capitalizedIdentifier } });
                 if (god) {
-                    // console.log(`  Found god:`, god.godName, `with godId:`, god.godId);
                     imageableId = god.godId;
                 } else {
                     console.warn(`  Could not find god with godName: ${identifier} for ability image.`);
@@ -59,7 +51,6 @@ async function processImages() {
             } else {
                 god = await God.findOne({ where: { godName: capitalizedIdentifier } });
                 if (god) {
-                    // console.log(`  Found god:`, god.godName, `with godId:`, god.godId);
                     imageableId = god.godId;
                 } else {
                     console.warn(`  Could not find god with godName: ${identifier} for main god image.`);
@@ -67,10 +58,8 @@ async function processImages() {
             }
         } else if (imageableType === 'item') {
             const formattedName = camelToTitle(identifier);
-            // console.log(`  Formatted item name: ${formattedName}`);
             const item = await Item.findOne({ where: { name: formattedName } });
             if (item) {
-                // console.log(`  Found item:`, item.name, `with id:`, item.id);
                 imageableId = item.id.toString();
             } else {
                 console.warn(`  Could not find item with name: ${formattedName}.`);
@@ -78,7 +67,6 @@ async function processImages() {
         }
 
         if (imageableId) {
-            // console.log("Result being pushed:", { url, imageableType, imageableId });
             results.push({
                 imageUrl,
                 imageableType,
@@ -87,7 +75,7 @@ async function processImages() {
         } else {
             console.warn(`  Could not resolve ID for image path: ${relativePath}`);
         }
-        // console.log(`  --------------------`);
+
     }
 
     return results;

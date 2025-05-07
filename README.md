@@ -332,7 +332,7 @@ Returns all the Items.
   - Used to display a all page, as well as populate the builder modal for user interactions
     - This route will be used for its own all page as well as the builder page.
   - **Future feature**
-    - May impliment the ability for user to create a items tier list as well as favorite items
+    - May impliment the ability for user to create an items tier list as well as favorite items
 
 - Request
 

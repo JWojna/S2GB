@@ -3,10 +3,6 @@
 const { Image } = require('../models')
 const processedImagesPromise = require('../data/images')
 
-
-
-
-
 let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;
@@ -17,7 +13,6 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     try {
       const processedImages = await processedImagesPromise;
-      console.log("Data being passed to bulkCreate:", processedImages);
       const createdImages = await Image.bulkCreate(processedImages)
       console.log(`Successfully seeded ${createdImages.length} images.`);
     } catch (error) {
