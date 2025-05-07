@@ -18,6 +18,11 @@ const aladdin =
         "movementSpeed": 365,
     },
     abilities: {
+        "specialItem": {
+            "name": "Aladdin's Lamp",
+            "passive": "Passive: You gain an extra [1% + .4% per level] stats from all items. (9% at max level)",
+
+        },
         "aspect": {
 
         },
