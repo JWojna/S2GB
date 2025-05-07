@@ -6,7 +6,6 @@ const seedUsers = [
         email: 'user@aa.io',
         hashedPassword: bcrypt.hashSync('password'),
         smite2IGN: 'Wrecktify',
-        profilePic: null,
         bio: null,
     },
     {
@@ -14,7 +13,6 @@ const seedUsers = [
         email: 'user1@aa.io',
         hashedPassword: bcrypt.hashSync('password'),
         smite2IGN: '700C001',
-        profilePic: null,
         bio: null,
     },
     {
@@ -22,7 +20,6 @@ const seedUsers = [
         email: 'user2@aa.io',
         hashedPassword: bcrypt.hashSync('password'),
         smite2IGN: null,
-        profilePic: null,
         bio: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Sed tortor eros, convallis vitae quam eu, maximus facilisis ex.`,
     },
@@ -31,7 +28,6 @@ const seedUsers = [
         email: 'user3@aa.io',
         hashedPassword: bcrypt.hashSync('password'),
         smite2IGN: null,
-        profilePic: null,
         bio: `ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor eros,
         convallis vitae quam eu, risus.`,
     },

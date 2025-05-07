@@ -36,10 +36,6 @@ module.exports = {
         allowNull: true,
         unique: true
       },
-      profilePic: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
       bio: {
         type: Sequelize.STRING(250),
         allowNull: true
