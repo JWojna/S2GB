@@ -60,9 +60,6 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     }, options);
-    //! ensure indexes are added
-    await queryInterface.addIndex('Gods', ['godId'], { unique: true, ...options });
-    await queryInterface.addIndex('Gods', ['godName'], { unique: true, ...options });
     await queryInterface.addIndex('Gods', ['pantheon'], options);
     await queryInterface.addIndex('Gods', ['tags'], options);
   },

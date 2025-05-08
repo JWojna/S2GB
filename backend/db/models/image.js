@@ -41,20 +41,34 @@ module.exports = (sequelize, DataTypes) => {
     ]
   });
 
-  Image.addHook('afterFind', findResult => {
-    if (!findResult) {
-      return
-    };
-    if (!Array.isArray(findResult)) findResult = [findResult];
-    for (const instance of findResult) {
-      if (instance?.imageableType && instance.Images) {
-        instance.imageable = instance.Images[0];
+  Image.addHook('afterFind', (findResult) => {
+    if (!findResult) return;
+    const results = Array.isArray(findResult) ? findResult : [findResult];
+
+    for (const instance of results) {
+      switch (instance.imageableType) {
+        case 'god':
+          if (instance.godImages?.length) {
+            instance.imageable = instance.godImages[0];
+          }
+          break;
+        case 'item':
+          if (instance.itemImages?.length) {
+            instance.imageable = instance.itemImages[0];
+          }
+          break;
+        default:
+          break;
       }
-      // To prevent mistakes:
-      delete instance.Images;
-      delete instance.dataValues.Images;
+
+      // Clean up to avoid leaking include data
+      delete instance.godImages;
+      delete instance.itemImages;
+      delete instance.dataValues?.godImages;
+      delete instance.dataValues?.itemImages;
     }
   });
+
 
   return Image;
 };

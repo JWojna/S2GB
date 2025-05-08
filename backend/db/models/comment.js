@@ -10,17 +10,86 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Comment.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: "userComments"
+      });
+      Comment.belongsTo(models.Build, {
+        foreignKey: 'commentableId',
+        constraints: false,
+        as: "buildComments"
+      });
+      Comment.belongsTo(models.TierList, {
+        foreignKey: 'commentableId',
+        constraints: false,
+        as: "tierComments"
+      });
     }
   }
   Comment.init({
-    userId: DataTypes.INTEGER,
-    commentableType: DataTypes.STRING,
-    commentableId: DataTypes.INTEGER,
-    body: DataTypes.TEXT
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
+      onDelete: "CASCADE"
+    },
+    commentableType: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    commentableId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    body: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Comment',
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt']
+      }
+    },
+    indexes: [
+      { fields: ['userId'] },
+      { fields: ['commentableType'] },
+      { fields: ['commentableId'] },
+    ]
   });
+
+  Comment.addHook('afterFind', (findResult) => {
+    if (!findResult) return;
+
+    const handleInstance = (instance) => {
+      switch (instance.commentableType) {
+        case 'Build':
+          if (instance.build) instance.commentable = instance.build;
+          break;
+        case 'TierList':
+          if (instance.tierList) instance.commentable = instance.tierList;
+          break;
+      }
+
+      // Clean up raw includes
+      delete instance.build;
+      delete instance.tierList;
+      delete instance.dataValues.build;
+      delete instance.dataValues.tierList;
+    };
+
+    if (Array.isArray(findResult)) {
+      findResult.forEach(handleInstance);
+    } else {
+      handleInstance(findResult);
+    }
+  });
+
+
   return Comment;
 };

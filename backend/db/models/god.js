@@ -108,8 +108,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     indexes: [
-      { unique: true, fields: ['godId'] },
-      { unique: true, fields: ['godName'] },
       { fields: ['pantheon'] },
       { fields: ['tags'] },
     ]

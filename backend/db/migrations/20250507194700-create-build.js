@@ -43,7 +43,7 @@ module.exports = {
         defaultValue: {}
       },
       abilityData: {
-        type: DataTypes.JSONB,
+        type: Sequelize.JSONB,
         allowNull: false
       },
       createdAt: {
@@ -57,9 +57,12 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     }, options);
+    await queryInterface.addIndex('Builds', ['userId'], options);
+    await queryInterface.addIndex('Builds', ['godId'], options);
+    await queryInterface.addIndex('Builds', ['role'], options);
   },
   async down(queryInterface, Sequelize) {
-        options.tableName = 'Builds'
+    options.tableName = 'Builds';
     await queryInterface.dropTable(options);
   }
 };

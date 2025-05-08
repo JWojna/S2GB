@@ -10,16 +10,29 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Build.belongsTo(models.User, { foreignKey: 'userId', as: "builds" })
+      Build.belongsTo(models.User, { foreignKey: 'userId', as: "builds" });
+
+      Build.hasMany(models.Comment, {
+        foreignKey: 'commentableId',
+        constraints: false,
+        scope: { commentableType: 'Build' },
+        as: 'comments',
+      });
+
     }
   }
   Build.init({
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
+      onDelete: "CASCADE"
     },
     godId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     title: {
@@ -57,5 +70,29 @@ module.exports = (sequelize, DataTypes) => {
       { fields: ['role'] },
     ]
   });
+
+  //! ON DELETE CASCADE LOGIC FOR POLY ASSOCS
+  Build.addHook('afterDestroy', async (build, options) => {
+    const { Comment } = require('../models');
+    await Comment.destroy({
+      where: {
+        commentableType: 'Build',
+        commentableId: build.id
+      },
+      transaction: options.transaction // preserves transaction scope if any
+    });
+  });
+
+  Build.addHook('afterDestroy', async (build, options) => {
+    const { Favorite } = require('../models');
+    await Favorite.destroy({
+      where: {
+        favableType: 'Build',
+        favableId: build.id
+      },
+      transaction: options.transaction
+    });
+  });
+
   return Build;
 };
