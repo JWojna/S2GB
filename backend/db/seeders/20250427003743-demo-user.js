@@ -2,7 +2,7 @@
 
 const { User } = require('../models');
 
-const seedUsers = require('../data/demoUserData');
+const seedUsers = require('../data/userSide/users/demoUserData');
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {

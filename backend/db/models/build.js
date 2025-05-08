@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       Build.hasMany(models.Comment, {
         foreignKey: 'commentableId',
         constraints: false,
-        scope: { commentableType: 'Build' },
+        scope: { commentableType: 'build' },
         as: 'comments',
       });
 

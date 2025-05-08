@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       TierList.hasMany(models.Comment, {
         foreignKey: 'commentableId',
         constraints: false,
-        scope: { commentableType: 'Tier' },
+        scope: { commentableType: 'tier' },
         as: 'comments',
       });
 
