@@ -43,7 +43,6 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     }, options);
-    await queryInterface.addIndex('TierLists', ['userId'], options);
   },
   async down(queryInterface, Sequelize) {
     options.tableName = 'TierList';

@@ -65,9 +65,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     indexes: [
-      { fields: ['userId'] },
-      { fields: ['favableType'] },
-      { fields: ['favableId'] },
       {
         // prevent dupes
         unique: true,
