@@ -1,7 +1,7 @@
 'use strict';
 
 const { Image } = require('../models')
-const processedImagesPromise = require('../data/images')
+const processedImagesPromise = require('../data/RESTful/images')
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {

@@ -2,7 +2,7 @@
 
 const { God } = require('../models');
 
-const godFiles = require('../data/gods/index')
+const godFiles = require('../data/RESTful/gods')
 const gods = Object.values(godFiles)
 
 let options = {};

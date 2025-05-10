@@ -29,7 +29,7 @@ module.exports = {
         allowNull: false
       },
       body: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         allowNull: false
       },
       createdAt: {

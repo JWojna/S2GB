@@ -42,11 +42,17 @@ module.exports = (sequelize, DataTypes) => {
       },
       onDelete: "CASCADE"
     },
-    favableType:{
+    favableType: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isIn: {
+          args: [['build', 'tier', 'god']],
+          msg: 'favableType must be build, tier, or god'
+        }
+      }
     },
-    favableId:{
+    favableId: {
       type: DataTypes.STRING,
       allowNull: false
     }
@@ -62,6 +68,12 @@ module.exports = (sequelize, DataTypes) => {
       { fields: ['userId'] },
       { fields: ['favableType'] },
       { fields: ['favableId'] },
+      {
+        // prevent dupes
+        unique: true,
+        fields: ['userId', 'favableType', 'favableId'],
+        name: 'unique_favorite_per_user'
+      }
     ]
   });
 
@@ -76,13 +88,19 @@ module.exports = (sequelize, DataTypes) => {
         case 'TierList':
           if (instance.tierList) instance.favable = instance.tierList;
           break;
+        case 'God':
+          if (instance.god) instance.favable = instance.god;
+          break;
+
       }
 
       // Clean up raw includes
       delete instance.build;
       delete instance.tierList;
+      delete instance.god;
       delete instance.dataValues.build;
       delete instance.dataValues.tierList;
+      delete instance.dataValues.god;
     };
 
     if (Array.isArray(findResult)) {

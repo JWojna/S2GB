@@ -1,4 +1,7 @@
 'use strict';
+
+const { isValidTierData } = require('./validators/validators');
+
 const {
   Model
 } = require('sequelize');
@@ -41,7 +44,14 @@ module.exports = (sequelize, DataTypes) => {
     },
     tierData: {
       type: DataTypes.JSONB,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isValid(value) {
+          if (!isValidTierData(value)) {
+            throw new Error('Invalid tierData structure or has dupe godId`s')
+          }
+        }
+      }
     }
   }, {
     sequelize,

@@ -42,11 +42,23 @@ module.exports = (sequelize, DataTypes) => {
     },
     commentableId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isIn: {
+          args: [['build', 'tier']],
+          msg: 'favableType must be build, tier'
+        }
+      }
     },
     body: {
-      type: DataTypes.TEXT,
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+          len: {
+            args: [0, 255],
+            msg: 'Bio cannot exceed 255 characters.'
+          }
+        }
     }
   }, {
     sequelize,

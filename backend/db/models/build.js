@@ -1,4 +1,7 @@
 'use strict';
+
+const { isValidItemData, isValidAbilityDataWithRules } = require('./validators/validators');
+
 const {
   Model
 } = require('sequelize');
@@ -42,7 +45,10 @@ module.exports = (sequelize, DataTypes) => {
     role: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: "Flex"
+      defaultValue: "Flex",
+      validate: {
+        isIn: [['Carry', 'Solo', 'Support', 'Mid', 'Jungle', 'Flex']]
+      }
     },
     buildDesc: {
       type: DataTypes.TEXT,
@@ -50,11 +56,25 @@ module.exports = (sequelize, DataTypes) => {
     },
     itemData: {
       type: DataTypes.JSONB,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isValidData(value) {
+          if (!isValidItemData(value)) {
+            throw new Error('Invalid itemData format')
+          }
+        }
+      }
     },
     abilityData: {
       type: DataTypes.JSONB,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isValidAbilityData(value) {
+          if (!isValidAbilityDataWithRules(value)) {
+            throw new Error('Invalid abilityData format, or rules violation')
+          }
+        }
+      }
     },
   }, {
     sequelize,
