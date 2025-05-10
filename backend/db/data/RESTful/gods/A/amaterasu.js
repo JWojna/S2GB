@@ -1,6 +1,6 @@
 const amaterasu =
 {
-    godId: 'jpAMAT',
+    godId: 'jpAMA',
     godName: 'Amaterasu',
     title: 'The Shining Light',
     pantheon: 'Japanese',

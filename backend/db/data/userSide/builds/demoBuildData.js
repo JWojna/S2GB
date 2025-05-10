@@ -19,10 +19,6 @@ module.exports = async function getDemoBuildData() {
     }
   });
 
-  console.log("Queried Items:");
-  items.forEach(item => console.log(item.name, item.id));
-
-
   const itemMap = {};
   items.forEach(item => {
     itemMap[item.name] = item.id;
