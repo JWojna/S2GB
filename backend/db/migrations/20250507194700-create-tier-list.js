@@ -45,7 +45,6 @@ module.exports = {
     }, options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'TierList';
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable('TierList', options);
   }
 };

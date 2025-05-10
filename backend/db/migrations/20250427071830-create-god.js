@@ -64,7 +64,6 @@ module.exports = {
     await queryInterface.addIndex('Gods', ['tags'], options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'Gods'
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable('Gods', options);
   }
 };

@@ -44,7 +44,6 @@ module.exports = {
     await queryInterface.addIndex('Favorites', ['favableId'], options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'Favorites';
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable('Favorites', options);
   }
 };
