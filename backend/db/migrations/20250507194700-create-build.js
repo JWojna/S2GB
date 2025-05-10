@@ -62,7 +62,6 @@ module.exports = {
     await queryInterface.addIndex('Builds', ['role'], options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'Builds';
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable('Builds', options);
   }
 };

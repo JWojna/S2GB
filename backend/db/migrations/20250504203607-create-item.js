@@ -45,7 +45,6 @@ module.exports = {
     await queryInterface.addIndex('Items', ['tier'], options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'Items'
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable('Items', options);
   }
 };

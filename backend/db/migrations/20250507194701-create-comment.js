@@ -48,7 +48,6 @@ module.exports = {
     await queryInterface.addIndex('Comments', ['commentableId'], options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = 'Comments';
-    await queryInterface.dropTable(options);
+    await queryInterface.dropTable('Comments', options);
   }
 };
