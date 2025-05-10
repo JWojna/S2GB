@@ -42,7 +42,7 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    });
+    }, options);
     await queryInterface.addIndex('Comments', ['userId'], options);
     await queryInterface.addIndex('Comments', ['commentableType'], options);
     await queryInterface.addIndex('Comments', ['commentableId'], options);

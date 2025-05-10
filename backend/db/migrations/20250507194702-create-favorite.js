@@ -38,7 +38,7 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    });
+    }, options);
     await queryInterface.addIndex('Favorites', ['userId'], options);
     await queryInterface.addIndex('Favorites', ['favableType'], options);
     await queryInterface.addIndex('Favorites', ['favableId'], options);
