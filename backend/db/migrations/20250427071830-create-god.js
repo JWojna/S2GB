@@ -61,7 +61,6 @@ module.exports = {
       }
     }, options);
     await queryInterface.addIndex('Gods', ['pantheon'], options);
-    await queryInterface.addIndex('Gods', ['tags'], options);
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Gods', options);
