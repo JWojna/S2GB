@@ -2,7 +2,7 @@
 
 const { User } = require('../models');
 
-const seedUsers = require('../data/demoUserData');
+const seedUsers = require('../data/userSide/users/demoUserData');
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -11,11 +11,11 @@ if (process.env.NODE_ENV === 'production') {
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await User.bulkCreate(seedUsers);
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     options.tableName = 'Users';
     await queryInterface.bulkDelete(options);
   }
