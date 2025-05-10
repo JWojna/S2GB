@@ -1,25 +1,32 @@
 'use strict';
 
+const { Build } = require('../models');
+
+const getDemoBuildData = require('../data/userSide/builds/demoBuildData');
+
+
+
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;
+}
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+
+    try {
+      const demoBuildData = await getDemoBuildData();
+      await Build.bulkCreate(demoBuildData);
+    } catch (error) {
+      console.log(error)
+    }
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    options.tableName = 'Builds';
+    await queryInterface.bulkDelete(options, {
+      title: ['DEMO BUILD', 'DEMO BUILD TWO']
+    });
   }
 };
