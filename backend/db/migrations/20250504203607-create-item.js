@@ -49,8 +49,8 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Items', ...options }, ['name'], 'items_name_idx'),
-      queryInterface.removeIndex({ tableName: 'Items', ...options }, ['tier'], 'items_tier_idx')
+      queryInterface.removeIndex({ tableName: 'Items', ...options }, ['name'], { name: 'items_name_idx' }),
+      queryInterface.removeIndex({ tableName: 'Items', ...options }, ['tier'], { name: 'items_tier_idx' })
     ]).then(() => {
       return queryInterface.dropTable('Items', options)
     })
