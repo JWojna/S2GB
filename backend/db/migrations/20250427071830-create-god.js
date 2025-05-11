@@ -61,15 +61,15 @@ module.exports = {
       }
     }, options).then(() => {
       return Promise.all([
-        queryInterface.addIndex({ tableName: 'Gods', ...options }, ['pantheon'], {...options, name: 'gods_pantheon_idx' }),
-        queryInterface.addIndex({ tableName: 'Gods', ...options }, ['tags'], {...options, name: 'gods_tags_idx' })
+        queryInterface.addIndex({ tableName: 'Gods', ...options }, ['pantheon'], { ...options, name: 'gods_pantheon_idx' }),
+        queryInterface.addIndex({ tableName: 'Gods', ...options }, ['tags'], { ...options, name: 'gods_tags_idx' })
       ])
     })
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Gods', ...options },  {...options, name: 'gods_pantheon_idx' }),
-      queryInterface.removeIndex({ tableName: 'Gods', ...options },  {...options, name: 'gods_tags_idx' })
+      queryInterface.removeIndex('Gods', 'gods_pantheon_idx', options),
+      queryInterface.removeIndex('Gods', 'gods_tags_idx', options)
     ]).then(() => {
       return queryInterface.dropTable('Gods', options)
     })
