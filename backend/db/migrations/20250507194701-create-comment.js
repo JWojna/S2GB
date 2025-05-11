@@ -44,17 +44,17 @@ module.exports = {
       }
     }, options).then(() => {
       return Promise.all([
-        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['userId'], { name: 'comments_userId_idx' }),
-        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['commentableType'], { name: 'comments_commentableType_idx' }),
-        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['commentableId'], { name: 'comments_commentableId_idx' })
+        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['userId'], { ...options, name: 'comments_userId_idx' }),
+        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['commentableType'], { ...options, name: 'comments_commentableType_idx' }),
+        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['commentableId'], { ...options, name: 'comments_commentableId_idx' })
       ])
     })
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Comments', ...options }, ['userId'], 'comments_userId_idx'),
-      queryInterface.removeIndex({ tableName: 'Comments', ...options }, ['commentableType'], 'comments_commentableType_idx'),
-      queryInterface.removeIndex({ tableName: 'Comments', ...options }, ['commentableId'], 'comments_commentableId_idx')
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, { ...options, name: 'comments_userId_idx' }),
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, { ...options, name: 'comments_commentableType_idx' }),
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, { ...options, name: 'comments_commentableId_idx' })
     ]).then(() => {
       return queryInterface.dropTable('Comments', options)
     })
