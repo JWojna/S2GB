@@ -60,7 +60,7 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     }, options);
-    await queryInterface.addIndex('Gods', ['pantheon'], options);
+    // await queryInterface.addIndex('Gods', ['pantheon'], options);
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Gods', options);
