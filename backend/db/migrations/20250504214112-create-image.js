@@ -23,7 +23,6 @@ module.exports = {
       imageableId: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: false
       },
       imageUrl: {
         type: Sequelize.STRING,
@@ -39,11 +38,19 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    }, options);
-
-    await queryInterface.addIndex('Images', ['imageableType'], options);
+    }, options).then(() => {
+      return Promise.all([
+        queryInterface.addIndex({ tableName: 'Images', ...options }, ['imageableType']),
+        queryInterface.addIndex({ tableName: 'Images', ...options }, ['imageableId'])
+      ])
+    })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Images', options);
+    return Promise.all([
+      queryInterface.removeIndex({ tableName: 'Images', ...options }, ['imageableType']),
+      queryInterface.removeIndex({ tableName: 'Images', ...options }, ['imageableId'])
+    ]).then(() => {
+      return queryInterface.dropTable('Images', options)
+    })
   }
 };

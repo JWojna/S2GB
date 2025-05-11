@@ -42,9 +42,17 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    }, options);
+    }, options).then(() => {
+      return Promise.all([
+        queryInterface.addIndex({ tableName: 'TierLists', ...options }, ['userId'])
+      ])
+    })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('TierList', options);
+    return Promise.all([
+      queryInterface.removeIndex({ tableName: 'TierLists', ...options }, ['userId'])
+    ]).then(() => {
+      return queryInterface.dropTable('TierLists', options)
+    })
   }
 };

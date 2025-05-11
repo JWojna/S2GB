@@ -56,12 +56,21 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    }, options);
-    await queryInterface.addIndex('Builds', ['userId'], options);
-    await queryInterface.addIndex('Builds', ['godId'], options);
-    await queryInterface.addIndex('Builds', ['role'], options);
+    }, options).then(() => {
+      return Promise.all([
+        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['userId']),
+        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['godId']),
+        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['role'])
+      ])
+    })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Builds', options);
+    return Promise.all([
+      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['userId']),
+      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['godId']),
+      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['role'])
+    ]).then(() => {
+      return queryInterface.dropTable('Builds', options)
+    })
   }
 };

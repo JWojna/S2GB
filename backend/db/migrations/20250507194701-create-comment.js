@@ -42,12 +42,21 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    }, options);
-    await queryInterface.addIndex('Comments', ['userId'], options);
-    await queryInterface.addIndex('Comments', ['commentableType'], options);
-    await queryInterface.addIndex('Comments', ['commentableId'], options);
+    }, options).then(() => {
+      return Promise.all([
+        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['userId']),
+        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['commentableType']),
+        queryInterface.addIndex({ tableName: 'Comments', ...options }, ['commentableId'])
+      ])
+    })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Comments', options);
+    return Promise.all([
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, ['userId']),
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, ['commentableType']),
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, ['commentableId'])
+    ]).then(() => {
+      return queryInterface.dropTable('Comments', options)
+    })
   }
 };

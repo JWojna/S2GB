@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable('Gods', {
+    await queryInterface.createTable('Gods', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -61,17 +61,17 @@ module.exports = {
       }
     }, options).then(() => {
       return Promise.all([
-        queryInterface.addIndex({ tableName: 'Gods', ...options}, ['pantheon']),
-        queryInterface.addIndex({ tableName: 'Gods', ...options}, ['tags'])
+        queryInterface.addIndex({ tableName: 'Gods', ...options }, ['pantheon']),
+        queryInterface.addIndex({ tableName: 'Gods', ...options }, ['tags'])
       ])
     })
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Gods', ...options}, ['pantheon']),
-      queryInterface.removeIndex({ tableName: 'Gods', ...options}, ['tags'])
+      queryInterface.removeIndex({ tableName: 'Gods', ...options }, ['pantheon']),
+      queryInterface.removeIndex({ tableName: 'Gods', ...options }, ['tags'])
     ]).then(() => {
-      return queryInterface.dropTable('Gods', options).then
+      return queryInterface.dropTable('Gods', options)
     })
   }
 };
