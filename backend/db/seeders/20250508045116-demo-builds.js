@@ -2,7 +2,6 @@
 
 const { Build } = require('../models');
 
-const getDemoBuildData = require('../data/userSide/builds/demoBuildData');
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -12,8 +11,8 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-
     try {
+      const getDemoBuildData = require('../data/userSide/builds/demoBuildData');
       const demoBuildData = await getDemoBuildData();
       await Build.bulkCreate(demoBuildData);
     } catch (error) {

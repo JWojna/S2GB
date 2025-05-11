@@ -2,7 +2,6 @@
 
 const { TierList } = require('../models');
 
-const getDemoTierData = require('../data/userSide/tierLists/demoTierData');
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -12,6 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const getDemoTierData = require('../data/userSide/tierLists/demoTierData');
     try {
       const demoTierdData = await getDemoTierData();
       await TierList.bulkCreate(demoTierdData);
