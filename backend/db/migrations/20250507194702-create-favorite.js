@@ -38,12 +38,21 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    }, options);
-    await queryInterface.addIndex('Favorites', ['userId'], options);
-    await queryInterface.addIndex('Favorites', ['favableType'], options);
-    await queryInterface.addIndex('Favorites', ['favableId'], options);
+    }, options).then(() => {
+      return Promise.all([
+        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['userId']),
+        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['favableType']),
+        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['favableId'])
+      ])
+    })
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Favorites', options);
+    return Promise.all([
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['userId']),
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['favableType']),
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['favableId'])
+    ]).then(() => {
+      return queryInterface.dropTable('Favorites', options)
+    })
   }
 };
