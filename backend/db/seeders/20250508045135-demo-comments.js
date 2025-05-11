@@ -2,7 +2,6 @@
 
 const { Comment } = require('../models');
 
-const getDemoCommentData = require('../data/userSide/comments/demoCommentData');
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -13,6 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   async up(queryInterface, Sequelize) {
     try {
+      const getDemoCommentData = require('../data/userSide/comments/demoCommentData');
       const demoCommentdData = await getDemoCommentData();
       await Comment.bulkCreate(demoCommentdData);
     } catch (error) {

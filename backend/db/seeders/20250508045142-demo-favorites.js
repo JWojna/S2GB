@@ -2,7 +2,6 @@
 
 const { Favorite } = require('../models');
 
-const getDemoFavoritetData = require('../data/userSide/favorites/demoFavData');
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -13,6 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   async up(queryInterface, Sequelize) {
     try {
+      const getDemoFavoritetData = require('../data/userSide/favorites/demoFavData');
       const demoFavoriteData = await getDemoFavoritetData();
       await Favorite.bulkCreate(demoFavoriteData);
     } catch (error) {
