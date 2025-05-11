@@ -52,9 +52,9 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex('Comments', 'comments_userId_idx', options ),
-      queryInterface.removeIndex('Comments', 'comments_commentableType_idx', options ),
-      queryInterface.removeIndex('Comments', 'comments_commentableId_idx', options )
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, 'comments_userId_idx'),
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, 'comments_commentableType_idx'),
+      queryInterface.removeIndex({ tableName: 'Comments', ...options }, 'comments_commentableId_idx')
     ]).then(() => {
       return queryInterface.dropTable('Comments', options)
     })
