@@ -48,9 +48,9 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex('Favorites', 'favorites_userId_idx', options),
-      queryInterface.removeIndex('Favorites', 'favorites_favableType_idx', options),
-      queryInterface.removeIndex('Favorites', 'favorites_favableId_idx', options)
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, 'favorites_userId_idx'),
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, 'favorites_favableType_idx'),
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, 'favorites_favableId_idx')
     ]).then(() => {
       return queryInterface.dropTable('Favorites', options);
     });
