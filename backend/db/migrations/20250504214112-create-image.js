@@ -40,15 +40,15 @@ module.exports = {
       }
     }, options).then(() => {
       return Promise.all([
-        queryInterface.addIndex({ tableName: 'Images', ...options }, ['imageableType']),
-        queryInterface.addIndex({ tableName: 'Images', ...options }, ['imageableId'])
+        queryInterface.addIndex({ tableName: 'Images', ...options }, ['imageableType'], { name: 'images_imageableType_idx' }),
+        queryInterface.addIndex({ tableName: 'Images', ...options }, ['imageableId'], { name: 'images_imageableId_idx' })
       ])
     })
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Images', ...options }, ['imageableType']),
-      queryInterface.removeIndex({ tableName: 'Images', ...options }, ['imageableId'])
+      queryInterface.removeIndex({ tableName: 'Images', ...options }, ['imageableType'], 'images_imageableType_idx'),
+      queryInterface.removeIndex({ tableName: 'Images', ...options }, ['imageableId'], 'images_imageableId_idx')
     ]).then(() => {
       return queryInterface.dropTable('Images', options)
     })
