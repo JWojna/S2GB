@@ -46,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
       God.hasMany(models.Image, {
         foreignKey: 'imageableId',
         constraints: false,
+        sourceKey: 'godId',
         scope: {
           imageableType: 'god'
         },

@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       Favorite.belongsTo(models.God, {
         foreignKey: 'favableId',
         constraints: false,
+        targetKey: 'godId',
         as: "godFavorites"
       });
 
