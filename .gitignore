@@ -5,4 +5,4 @@ build
 *.db
 setup
 *script
-/frontend/public/images/
+
