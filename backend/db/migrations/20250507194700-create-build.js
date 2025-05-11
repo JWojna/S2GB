@@ -58,17 +58,17 @@ module.exports = {
       }
     }, options).then(() => {
       return Promise.all([
-        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['userId']),
-        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['godId']),
-        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['role'])
+        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['userId'], { name: 'builds_userId_idx' }),
+        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['godId'], { name: 'builds_godId_idx' }),
+        queryInterface.addIndex({ tableName: 'Builds', ...options }, ['role'], { name: 'builds_role_idx' })
       ])
     })
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['userId']),
-      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['godId']),
-      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['role'])
+      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['userId'], 'builds_userId_idx'),
+      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['godId'], 'builds_godId_idx'),
+      queryInterface.removeIndex({ tableName: 'Builds', ...options }, ['role'], 'builds_role_idx')
     ]).then(() => {
       return queryInterface.dropTable('Builds', options)
     })

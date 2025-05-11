@@ -42,20 +42,17 @@ module.exports = {
       }
     }, options).then(() => {
       return Promise.all([
-        queryInterface.addIndex({ tableName: 'Items', ...options }, ['name']),
-        queryInterface.addIndex({ tableName: 'Items', ...options }, ['tier'])
+        queryInterface.addIndex({ tableName: 'Items', ...options }, ['name'], { name: 'items_name_idx' }),
+        queryInterface.addIndex({ tableName: 'Items', ...options }, ['tier'], { name: 'items_tier_idx' })
       ])
     })
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Items', ...options }, ['name']),
-      queryInterface.removeIndex({ tableName: 'Items', ...options }, ['tier'])
+      queryInterface.removeIndex({ tableName: 'Items', ...options }, ['name'], 'items_name_idx'),
+      queryInterface.removeIndex({ tableName: 'Items', ...options }, ['tier'], 'items_tier_idx')
     ]).then(() => {
       return queryInterface.dropTable('Items', options)
     })
   }
 };
-
-
-

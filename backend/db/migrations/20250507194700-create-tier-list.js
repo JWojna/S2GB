@@ -44,13 +44,13 @@ module.exports = {
       }
     }, options).then(() => {
       return Promise.all([
-        queryInterface.addIndex({ tableName: 'TierLists', ...options }, ['userId'])
+        queryInterface.addIndex({ tableName: 'TierLists', ...options }, ['userId'], { name: 'tierList_userId_idx' })
       ])
     })
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'TierLists', ...options }, ['userId'])
+      queryInterface.removeIndex({ tableName: 'TierLists', ...options }, ['userId'], 'tierList_userId_idx')
     ]).then(() => {
       return queryInterface.dropTable('TierLists', options)
     })

@@ -40,17 +40,17 @@ module.exports = {
       }
     }, options).then(() => {
       return Promise.all([
-        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['userId']),
-        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['favableType']),
-        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['favableId'])
+        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['userId'], { name: 'favorites_userId_idx' }),
+        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['favableType'], { name: 'favorites_favableType_idx' }),
+        queryInterface.addIndex({ tableName: 'Favorites', ...options }, ['favableId'], { name: 'favorites_favableId_idx' })
       ])
     })
   },
   async down(queryInterface, Sequelize) {
     return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['userId']),
-      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['favableType']),
-      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['favableId'])
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['userId'], 'favorites_userId_idx'),
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['favableType'], 'favorites_favableType_idx'),
+      queryInterface.removeIndex({ tableName: 'Favorites', ...options }, ['favableId'], 'favorites_favableId_idx')
     ]).then(() => {
       return queryInterface.dropTable('Favorites', options)
     })
