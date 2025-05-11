@@ -68,11 +68,16 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     console.log('Running down migration for GODS...============================');
-    return Promise.all([
-      queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_pantheon_idx'),
-      queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_tags_idx')
-    ]).then(() => {
-      return queryInterface.dropTable('Gods', options)
-    })
+    try {
+      return Promise.all([
+        queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_pantheon_idx'),
+        queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_tags_idx')
+      ]).then(() => {
+        return queryInterface.dropTable('Gods', options)
+      })
+    } catch (error) {
+      console.log(error, '================================');
+    }
+
   }
 };
