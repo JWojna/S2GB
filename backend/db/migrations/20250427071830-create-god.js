@@ -70,8 +70,8 @@ module.exports = {
     console.log('Running down migration for GODS...============================');
     try {
       return Promise.all([
-        queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_pantheon_idx'),
-        queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_tags_idx')
+        await queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_pantheon_idx'),
+        await queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_tags_idx')
       ]).then(() => {
         return queryInterface.dropTable('Gods', options)
       })
