@@ -69,15 +69,39 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     console.log('Running down migration for GODS...============================');
     try {
-      return Promise.all([
-        await queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_pantheon_idx'),
-        await queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_tags_idx')
-      ]).then(() => {
-        return queryInterface.dropTable('Gods', options)
-      })
+      await queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_pantheon_idx');
+      console.log('Successfully attempted to remove index: gods_pantheon_idx');
     } catch (error) {
-      console.log(error, '================================');
+      console.warn('Warning: Error removing index gods_pantheon_idx (might not exist):', error.message);
     }
 
+    try {
+      await queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_tags_idx');
+      console.log('Successfully attempted to remove index: gods_tags_idx');
+    } catch (error) {
+      console.warn('Warning: Error removing index gods_tags_idx (might not exist):', error.message);
+    }
+
+    try {
+      await queryInterface.dropTable('Gods', options);
+      console.log('Successfully dropped table: Gods');
+    } catch (error) {
+      console.error('Error dropping table Gods:', error);
+    }
   }
 };
+
+// async down(queryInterface, Sequelize) {
+//   console.log('Running down migration for GODS...============================');
+//   try {
+//     return Promise.all([
+//       await queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_pantheon_idx'),
+//       await queryInterface.removeIndex({ tableName: 'Gods', ...options }, 'gods_tags_idx')
+//     ]).then(() => {
+//       return queryInterface.dropTable('Gods', options)
+//     })
+//   } catch (error) {
+//     console.log(error, '================================');
+//   }
+
+// }
