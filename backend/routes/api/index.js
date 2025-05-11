@@ -3,6 +3,7 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const godsRouter = require('./gods.js');
+const itemsRouter = require('./items.js');
 const { restoreUser } = require('../../utils/auth.js');
 
 router.use(restoreUser)
@@ -11,7 +12,9 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('/gods', godsRouter)
+router.use('/gods', godsRouter);
+
+router.use('/items', itemsRouter);
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });

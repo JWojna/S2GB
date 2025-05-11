@@ -1,8 +1,6 @@
 const express = require('express');
 
 const { God, Image } = require('../../db/models');
-const { where } = require('sequelize');
-
 
 const router = express.Router();
 
