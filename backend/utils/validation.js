@@ -1,5 +1,5 @@
-//! backend/utils/validation.js
-const { validationResult } = require('express-validator');
+const { check, body, validationResult } = require('express-validator');
+const { isValidTierData } = require('../db/models/validators/validators')
 
 //~ middleware for formatting errors from express-validator middleware
 const handleValidationErrors = (req, _res, next) => {
@@ -20,4 +20,31 @@ const handleValidationErrors = (req, _res, next) => {
     next();
 };
 
-module.exports = { handleValidationErrors };
+//~ Tier list validations
+const validateTierList = [
+    check('title')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Title is required')
+        .isLength({ min: 3, max: 50 })
+        .withMessage('Title must be between 3 and 50 characters'),
+
+    check('description')
+        .optional({ checkFalsy: true })
+        .isLength({ max: 250 })
+        .withMessage('Description must be less than 250 characters'),
+
+    check('tierData')
+        .exists({ checkFalsy: true })
+        .withMessage('Tier data is required')
+        .custom((value) => {
+            if (!isValidTierData(value)) {
+                throw new Error('Invalid tier data format or duplicate god IDs');
+            }
+            return true;
+        }),
+
+    handleValidationErrors
+];
+
+module.exports = { handleValidationErrors, validateTierList };
