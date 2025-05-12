@@ -57,14 +57,6 @@ router.get('/:tierListId/comments', async (req, res) => {
     };
 });
 
-//! Get all favorite tier lists of current user
-//^ req auth
-
-//! Create fav by tier list id
-//^ req auth
-
-//! Delete Fav by tier list id
-//^ req auth
 
 //! Create a tier list
 //^ require auth to save
@@ -74,8 +66,37 @@ router.get('/:tierListId/comments', async (req, res) => {
 
 //! Delete a tier list
 //^ require auth and ownership
+router.delete('/:tierListId', requireAuth, checkOwnership, async (req, res) => {
+    try {
+        const tierList = await TierList.findByPk(req.params.tierListId);
+        if (!tierList) res.status(404).json({ message: 'Tier list couldn\'t be found' });
+
+        tierList.destroy();
+
+        res.json({ message: 'Successfully deleted' });
+    } catch (error) {
+        console.error('Error deleteing tier list:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 //! Create a comment for a tier list
 //^ require auth
+
+//! Get all favorite tier lists of current user
+//^ req auth
+
+//! Create fav by tier list id
+//^ req auth//! Get all favorite tier lists of current user
+//^ req auth
+
+//! Create fav by tier list id
+//^ req auth
+
+//! Delete Fav by tier list id
+//^ req auth
+
+//! Delete Fav by tier list id
+//^ req auth
 
 module.exports = router;

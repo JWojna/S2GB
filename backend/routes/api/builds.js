@@ -83,15 +83,6 @@ router.get('/:buildId/comments', async (req, res) => {
     };
 });
 
-//! Get all favorite builds of current user
-//^ req auth
-
-//! Create fav by build id
-//^ req auth
-
-//! Delete Fav by build id
-//^ req auth
-
 //! Create a build
 //^ require auth to save
 
@@ -100,8 +91,29 @@ router.get('/:buildId/comments', async (req, res) => {
 
 //! Delete a build
 //^ require auth and ownership
+router.delete('/:buildId', requireAuth, checkOwnership, async (req, res) => {
+    try {
+        const build = await Build.findByPk(req.params.tierListId);
+        if (!build) res.status(404).json({ message: 'Build couldn\'t be found' });
+
+        build.destroy();
+
+        res.json({ message: 'Successfully deleted' });
+    } catch (error) {
+        console.error('Error deleteing build:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 //! Create a comment for a build
 //^ require auth
 
+//! Get all favorite builds of current user
+//^ req auth
+
+//! Create fav by build id
+//^ req auth
+
+//! Delete Fav by build id
+//^ req auth
 module.exports = router;
