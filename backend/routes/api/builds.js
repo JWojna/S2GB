@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { Build, Item, God, Image } = require('../../db/models');
+const { Build, Item, God, Image, Comment } = require('../../db/models');
 
 
 //^ utilities
@@ -83,7 +83,7 @@ router.get('/:buildId', async (req, res) => {
     }
 });
 
-// //! Get builds owned by current user
+//! Get builds owned by current user
 router.get('/current', requireAuth, async (req, res) => {
     try {
         const builds = await Build.findAll({ where: { userId: req.user.id } });
@@ -92,6 +92,28 @@ router.get('/current', requireAuth, async (req, res) => {
         console.error('Error fetching builds:', error);
         return res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+//! Get comments on a build by build id
+router.get('/:buildId/comments', async (req, res) => {
+    try {
+        const buildWithComments = await Build.findByPk(req.params.buildId, {
+            include: {
+                model: Comment,
+                as: 'comments',
+                attributes: ['body']
+            }
+        });
+
+        if (!buildWithComments) res.status(404).json({ message: `Build couldn't be found` })
+
+        const buildComments = buildWithComments.comments
+
+        res.json({ Comments: buildComments })
+    } catch (error) {
+        console.error('Error fetching comments:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    };
 });
 
 module.exports = router
