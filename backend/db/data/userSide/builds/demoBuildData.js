@@ -1,48 +1,24 @@
 module.exports = async function getDemoBuildData() {
-  const { User, Item } = require('../../../models');
+  const { User } = require('../../../models');
 
   const user = await User.findOne({ where: { username: 'SmiteEnjoyer' } });
   const userId = user?.id;
 
-  const tier3ItemNames = [
-    'Mystical Mail',
-    'Ancile',
-    'Death Metal',
-    'Stampede',
-    'Rage',
-    'Magi`s Cloak'
-  ];
-
-  const items = await Item.findAll({
-    where: {
-      name: tier3ItemNames
-    }
-  });
-
-  const itemMap = {};
-  items.forEach(item => {
-    itemMap[item.name] = item.id;
-  });
-
-  if (Object.values(itemMap).some(id => id == null)) {
-    throw new Error('Missing item(s) in itemMap');
-  }
-
   return [
     {
       userId,
-      godId: 'grACHIL',
+      godId: 'grACHI',
       title: "DEMO BUILD",
       role: "Flex",
       buildDesc: "This is a DEMO BUILD.",
       itemData: {
         items: {
-          slotOne: itemMap['Mystical Mail'],
-          slotTwo: itemMap['Ancile'],
-          slotThree: itemMap['Death Metal'],
-          slotFour: itemMap['Stampede'],
-          slotFive: itemMap['Rage'],
-          slotSix: itemMap['Magi`s Cloak']
+          slotOne: 'Mystical Mail',
+          slotTwo: 'Ancile',
+          slotThree: 'Death Metal',
+          slotFour: 'Stampede',
+          slotFive: 'Rage',
+          slotSix: 'Magi\'s Cloak'
         },
         relic: null,
         consumables: {
@@ -65,12 +41,12 @@ module.exports = async function getDemoBuildData() {
       buildDesc: "demo build",
       itemData: {
         items: {
-          slotOne: itemMap['Death Metal'],
-          slotTwo: itemMap['Stampede'],
-          slotThree: itemMap['Mystical Mail'],
-          slotFour: itemMap['Rage'],
-          slotFive: itemMap['Ancile'],
-          slotSix: itemMap['Magi`s Cloak']
+          slotOne: 'Death Metal',
+          slotTwo: 'Stampede',
+          slotThree: 'Mystical Mail',
+          slotFour: 'Rage',
+          slotFive: 'Ancile',
+          slotSix: 'Magi\'s Cloak'
         },
         relic: null,
         consumables: {
