@@ -3,7 +3,7 @@ const express = require('express');
 const { TierList, God, Image, Comment } = require('../../db/models');
 
 //^ utils
-const { requireAuth } = require('../../utils/auth');
+const { requireAuth, checkOwnership } = require('../../utils/auth');
 
 const router = express.Router();
 

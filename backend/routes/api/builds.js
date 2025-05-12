@@ -5,7 +5,7 @@ const { Build, Item, God, Image, Comment } = require('../../db/models');
 //^ utilities
 const { cleanItemSlotMap, cleanBuildGod } = require('../../utils/cleaners');
 const { hydrateBuildItems } = require('../../utils/hydrators');
-const { requireAuth } = require('../../utils/auth');
+const { requireAuth, checkOwnership } = require('../../utils/auth');
 
 const router = express.Router();
 
