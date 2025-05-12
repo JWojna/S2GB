@@ -5,6 +5,7 @@ const usersRouter = require('./users.js');
 const godsRouter = require('./gods.js');
 const itemsRouter = require('./items.js');
 const buildsRouter = require('./builds.js');
+const tierListsRouter = require('./tierLists.js');
 const { restoreUser } = require('../../utils/auth.js');
 
 router.use(restoreUser)
@@ -18,6 +19,8 @@ router.use('/gods', godsRouter);
 router.use('/items', itemsRouter);
 
 router.use('/builds', buildsRouter);
+
+router.use('/tierLists', tierListsRouter);
 
 router.post('/test', function(req, res) {
     res.json({ requestBody: req.body });
