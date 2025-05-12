@@ -2,6 +2,11 @@ const express = require('express');
 
 const { Build, Item, God, Image } = require('../../db/models');
 
+
+//^ utilities
+const { cleanItemSlotMap, cleanBuildGod } = require('../../utils/cleaners');
+const { requireAuth } = require('../../utils/auth');
+
 const router = express.Router();
 
 //! Get all builds
@@ -28,6 +33,7 @@ router.get('/:buildId', async (req, res) => {
         // Hydrate items from names
         const items = await Item.findAll({
             where: { name: itemNames },
+            attributes: ['name', 'data'],
             include: [{ model: Image, as: 'Images', attributes: ['imageUrl'] }]
         });
 
@@ -41,11 +47,15 @@ router.get('/:buildId', async (req, res) => {
         const hydratedItems = {};
         for (const [slot, name] of Object.entries(build.itemData.items)) {
             hydratedItems[slot] = name ? itemMap[name] || null : null;
-        }
+        };
+
+        //clean hidrated items
+        const cleanedItems = cleanItemSlotMap(hydratedItems)
 
         const godId = build.godId
         const god = await God.findOne({
             where: { godId },
+            attributes: ['godName', 'title', 'pantheon', 'stats', 'abilities'],
             include: [
                 {
                     model: Image,
@@ -55,13 +65,16 @@ router.get('/:buildId', async (req, res) => {
             ]
         });
 
+        //clean god object
+        const cleanedGod = cleanBuildGod(god)
+
         return res.json({
             ...build.toJSON(),
             itemData: {
                 ...build.itemData,
-                items: hydratedItems,
-                god
+                items: cleanedItems,
             },
+            god: cleanedGod
         });
 
     } catch (error) {
@@ -71,51 +84,14 @@ router.get('/:buildId', async (req, res) => {
 });
 
 // //! Get builds owned by current user
-// router.get('/current', requireAuth, async (req, res) => {
-//   try {
-//     const spots = await Spot.findAll({
-//         where: {
-//             ownerId: req.user.id
-//         },
-//         include: [{
-//             model: Image,
-//             as: 'Images',
-//             where: { preview: true },
-//             attributes: ['url'],
-//             limit: 1
-//         }],
-//     });
-
-//     const reviewAverages = await Review.findAll({
-//         attributes: ['spotId', [fn('SUM', col('stars')), 'sumStars'], [fn('COUNT', col('stars')), 'reviewCount']],
-//         group: ['spotId']
-//     });
-
-//     const avgRateMap = {};
-//     reviewAverages.forEach( reviewAverage => {
-//         const { spotId, sumStars, reviewCount } = reviewAverage.dataValues;
-//         const avgRating = sumStars / reviewCount;
-//         avgRateMap[spotId] = avgRating;
-//     });
-
-//     const responseData = spots.map(spot => {
-//         const spotObj = spot.get();
-//         delete spotObj.Images;
-
-//         return {
-//             ...spotObj,
-//             createdAt: formatDateTime(spot.createdAt),
-//             updatedAt: formatDateTime(spot.updatedAt),
-//             avgRating: avgRateMap[spot.id] || 1,
-//             previewImage: spot.Images[0]?.url || null
-//         };
-//     });
-
-//     res.json({ Spots: responseData });
-//   } catch (error) {
-//     console.error('Error fetching spot:', error);
-//     return res.status(500).json({ error: 'Internal Server Error' });
-//   };
-// });
+router.get('/current', requireAuth, async (req, res) => {
+    try {
+        const builds = await Build.findAll({ where: { userId: req.user.id } });
+        return res.json({ Builds: builds })
+    } catch (error) {
+        console.error('Error fetching builds:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 module.exports = router
