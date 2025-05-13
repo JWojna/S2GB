@@ -108,12 +108,5 @@ router.delete('/:buildId', requireAuth, checkOwnership, async (req, res) => {
 //! Create a comment for a build
 //^ require auth
 
-//! Get all favorite builds of current user
-//^ req auth
 
-//! Create fav by build id
-//^ req auth
-
-//! Delete Fav by build id
-//^ req auth
 module.exports = router;

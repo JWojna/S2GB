@@ -1,5 +1,15 @@
+const { body } = require('express-validator');
+
 const isObject = (obj) =>
   typeof obj === 'object' && obj !== null && !Array.isArray(obj);
+
+const checkIsObject = (key) =>
+  body(key).custom((value) => {
+    if (!isObject(value)) {
+      throw new Error(`${key} must be a valid object`);
+    }
+    return true;
+  });
 
 const isValidTierData = (data, minCount = 4, enforceGlobalUniqueness = true) => {
   if (!isObject(data)) return false;
@@ -99,5 +109,6 @@ module.exports = {
   isObject,
   isValidTierData,
   isValidAbilityDataWithRules,
-  isValidItemData
+  isValidItemData,
+  checkIsObject
 };

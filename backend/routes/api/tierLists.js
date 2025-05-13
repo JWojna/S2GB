@@ -5,6 +5,7 @@ const { TierList, God, Image, Comment } = require('../../db/models');
 //^ utils
 const { requireAuth, checkOwnership } = require('../../utils/auth');
 const { validateTierList } = require('../../utils/validation');
+const { checkUserDupeComment } = require('../../utils/checkers');
 
 const router = express.Router();
 
@@ -81,7 +82,7 @@ router.post('/', requireAuth, validateTierList, async (req, res) => {
 
 //! Edit a tier list
 //^ require auth and ownership
-router.put('/tierListId', requireAuth, checkOwnership(TierList), validateTierList, async (req, res) => {
+router.put('/:tierListId', requireAuth, checkOwnership(TierList, 'tierListId'), validateTierList, async (req, res) => {
     try {
         const tierList = await TierList.findByPk(req.params.spotId)
         tierList.set({
@@ -99,7 +100,7 @@ router.put('/tierListId', requireAuth, checkOwnership(TierList), validateTierLis
 
 //! Delete a tier list
 //^ require auth and ownership
-router.delete('/:tierListId', requireAuth, checkOwnership(TierList), async (req, res) => {
+router.delete('/:tierListId', requireAuth, checkOwnership(TierList, 'tierListId'), async (req, res) => {
     try {
         const tierList = await TierList.findByPk(req.params.tierListId);
         if (!tierList) res.status(404).json({ message: 'Tier list couldn\'t be found' });
@@ -115,15 +116,26 @@ router.delete('/:tierListId', requireAuth, checkOwnership(TierList), async (req,
 
 //! Create a comment for a tier list
 //^ require auth
+router.post('/:tierListId', requireAuth, async (req, res) => {
+    try {
+        const tierList = await TierList.findByPk(req.params.tierListId);
+        if (!tierList) res.status(404).json({ message: 'Tier list couldn\'t be found'});
+        if (tierList.userId === req.user.id) res.status(400).json({ message: 'You can\'t comment on your own tier list'})
 
-//! Get all favorite tier lists of current user
-//^ req auth
+        const dupeCheck = await checkUserDupeComment(req.user.id, tier);
+        if (dupeCheck) res.status(400).json({ message: 'You already commented on this tier list'});
 
-//! Create fav by tier list id
-//^ req auth
+        const newComment = await Comment.create({
+            userId: req.user.id,
+            commentableType: 'tier',
+            commentableId: tierList.id,
+            body: req.body.body
+        });
 
-//! Delete Fav by tier list id
-//^ req auth
+        res.status(201).json(newComment);
+    } catch (error) {
 
+    }
+})
 
 module.exports = router;

@@ -1,5 +1,5 @@
-const { check, body, validationResult } = require('express-validator');
-const { isValidTierData } = require('../db/models/validators/validators')
+const { check, validationResult } = require('express-validator');
+const { isValidTierData, checkIsObject } = require('./validators/validators')
 
 //~ middleware for formatting errors from express-validator middleware
 const handleValidationErrors = (req, _res, next) => {
@@ -43,6 +43,8 @@ const validateTierList = [
             }
             return true;
         }),
+
+    checkIsObject('tierData'),
 
     handleValidationErrors
 ];

@@ -1,6 +1,6 @@
 'use strict';
 
-const { isValidItemData, isValidAbilityDataWithRules } = require('./validators/validators');
+const { isValidItemData, isValidAbilityDataWithRules } = require('../../utils/validators/validators');
 
 const {
   Model

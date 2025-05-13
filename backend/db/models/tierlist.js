@@ -1,6 +1,6 @@
 'use strict';
 
-const { isValidTierData } = require('./validators/validators');
+const { isValidTierData } = require('../../utils/validators/validators');
 
 const {
   Model
