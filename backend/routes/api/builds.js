@@ -107,6 +107,26 @@ router.delete('/:buildId', requireAuth, checkOwnership, async (req, res) => {
 
 //! Create a comment for a build
 //^ require auth
+router.post('/:buildId', requireAuth, async (req, res) => {
+    try {
+        const build = await Build.findByPk(req.params.buildId);
+        if (!build) res.status(404).json({ message: 'Build couldn\'t be found'});
+        if (build.userId === req.user.id) res.status(400).json({ message: 'You can\'t comment on your own build'})
 
+        const dupeCheck = await checkUserDupeComment(req.user.id, build);
+        if (dupeCheck) res.status(400).json({ message: 'You already commented on this build'});
+
+        const newComment = await Comment.create({
+            userId: req.user.id,
+            commentableType: 'build',
+            commentableId: build.id,
+            body: req.body.body
+        });
+
+        res.status(201).json(newComment);
+    } catch (error) {
+
+    }
+})
 
 module.exports = router;
