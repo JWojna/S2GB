@@ -7,8 +7,15 @@ const checkUserDupeComment = async (
     if (!commentableInstance || !commentableInstance.constructor) {
         throw new Error('Invalid commentable instance');
     }
+    const type = commentableInstance.constructor.name.toLowerCase()
+    let commentableType;
 
-    const commentableType = commentableInstance.constructor.name;
+    if (type === 'tierlist') {
+        commentableType = 'tier';
+    } else {
+        commentableType = type;
+    };
+
     const commentableId = commentableInstance.id;
 
     const existing = await Comment.findOne({

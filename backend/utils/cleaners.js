@@ -18,6 +18,7 @@ function cleanBuildGod(god) {
     ab4 = {}
   } = abilities;
 
+  //! single for builds
   const cleanGodObj = {
     icon: getImageUrl(images, `${slug}Image`) || null,
     name: godObj.godName,
@@ -49,6 +50,26 @@ function cleanBuildGod(god) {
   return cleanGodObj;
 };
 
+//! multy for tierlist
+function cleanTierGods(gods) {
+  const cleaned ={};
+
+  for (const god of gods) {
+    const raw = god?.get?.() || {};
+    const images = raw.Images || [];
+    const identifier = raw.godId;
+    const slug = (raw.godName || '').toLowerCase().replace(/\s+/g, '');
+
+    cleaned[identifier] = {
+      name: raw.godName,
+      icon: getImageUrl(images, `${slug}Image`) || null
+    };
+  }
+
+  return cleaned
+}
+
+
 function cleanItemSlotMap(hydratedItems) {
   const result = {};
   for (const [slot, item] of Object.entries(hydratedItems)) {
@@ -70,4 +91,4 @@ function cleanItemSlotMap(hydratedItems) {
   return result;
 }
 
-module.exports = { cleanBuildGod, cleanItemSlotMap }
+module.exports = { cleanBuildGod, cleanItemSlotMap, cleanTierGods }

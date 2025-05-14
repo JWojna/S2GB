@@ -12,4 +12,22 @@ function hydrateBuildItems(slotMap, items) {
   return hydrated;
 }
 
-module.exports = { hydrateBuildItems };
+function hydrateTierData(tierData, godMap) {
+  const hydrated = {};
+
+  for (const [tier, ids] of tierData) {
+    hydrated[tier] = ids.map(identifier => {
+      const god = godMap[identifier];
+      return {
+        id: identifier,
+        name: god?.name || null,
+        icon: god?.icon || null
+      }
+    });
+  }
+
+  return hydrated;
+}
+
+
+module.exports = { hydrateBuildItems, hydrateTierData };

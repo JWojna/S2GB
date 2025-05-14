@@ -38,17 +38,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     commentableType: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    commentableId: {
-      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         isIn: {
           args: [['build', 'tier']],
-          msg: 'favableType must be build, tier'
+          msg: 'commentableType must be build, tier'
         }
       }
+    },
+    commentableId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     body: {
       type: DataTypes.STRING,
