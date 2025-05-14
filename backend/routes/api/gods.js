@@ -1,6 +1,7 @@
 const express = require('express');
 
 const { God, Image } = require('../../db/models');
+const { cleanSimpleGodList } = require('../../utils/cleaners');
 
 const router = express.Router();
 
@@ -15,7 +16,10 @@ router.get(
                     attributes: ['imageUrl'],
                 }]
             })
-            return res.json({ Gods: gods })
+
+            const cleanedList = cleanSimpleGodList(gods);
+
+            return res.json({ Gods: cleanedList })
         } catch (error) {
             console.error('Error fetching gods:', error);
             return res.status(500).json({ error: 'Internal Server Error' });

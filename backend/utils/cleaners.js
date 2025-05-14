@@ -69,6 +69,24 @@ function cleanTierGods(gods) {
   return cleaned
 }
 
+//! all gods cleaner
+function cleanSimpleGodList(gods) {
+  return gods
+    .map(god => {
+      const raw = god?.get?.() || {};
+      const images = raw.Images || [];
+      const slug = (raw.godName || '').toLowerCase().replace(/\s+/g, '');
+
+      return {
+        godId: raw.godId,
+        name: raw.godName,
+        icon: getImageUrl(images, `${slug}Image`) || null
+      };
+    })
+    .filter(god => god.godId && god.name); // removes placeholder/incomplete gods
+}
+
+
 
 function cleanItemSlotMap(hydratedItems) {
   const result = {};
@@ -91,4 +109,4 @@ function cleanItemSlotMap(hydratedItems) {
   return result;
 }
 
-module.exports = { cleanBuildGod, cleanItemSlotMap, cleanTierGods }
+module.exports = { cleanBuildGod, cleanItemSlotMap, cleanTierGods, cleanSimpleGodList }
